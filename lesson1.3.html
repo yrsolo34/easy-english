@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy English | Social Media Addiction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4688e2;
+            --primary-light: #5d9cff;
+            --secondary: #166088;
+            --accent: #FF6B6B;
+            --accent-light: #FF8E8E;
+            --success: #4CAF7D;
+            --warning: #FFB74D;
+            --light-bg: #F9FAFC;
+            --light-blue: #EDF2F7;
+            --light-green: #F0FFF4;
+            --light-yellow: #FFF9E6;
+            --light-orange: #FFEFE6;
+            --light-purple: #F5F0FF;
+            --border: #E2E8F0;
+            --text: #2D3748;
+            --text-light: #718096;
+            --radius: 10px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .lesson-main-title {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .easy-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1.5rem 2rem;
+            color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .unit-info {
+            text-align: center;
+        }
+
+        .unit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .user-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .easy-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .easy-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 1px solid var(--border);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .lesson-nav {
+            list-style: none;
+        }
+
+        .lesson-nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            user-select: none;
+        }
+
+        .lesson-nav-item:hover {
+            background: var(--light-blue);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .lesson-nav-item.active {
+            background: var(--light-blue);
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .lesson-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .active .lesson-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .easy-content {
+            flex: 1;
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .lesson-section {
+            scroll-margin-top: 120px;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-section:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-header {
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-tag {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-main-title {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lesson-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .content-block {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .block-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .block-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .block-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .reading-block {
+            background: var(--light-blue);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .reading-text {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-term {
+            background-color: rgba(108, 92, 231, 0.1);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+            color: var(--accent);
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+
+        .exercise-block {
+            background: var(--light-bg);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .exercise-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+
+        .exercise-question {
+            margin-bottom: 1.25rem;
+            padding-left: 1.75rem;
+            position: relative;
+        }
+
+        .question-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        .question-text {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .answer-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .answer-toggle:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .answer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .answer-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .answer-list {
+            list-style-type: none;
+        }
+
+        .answer-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .answer-list li:last-child {
+            border-bottom: none;
+        }
+
+        .correct-answer {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .answer-explanation {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .writing-block {
+            margin: 2rem 0;
+        }
+
+        .writing-prompt {
+            background: linear-gradient(to right, var(--light-yellow) 0%, rgba(255, 249, 230, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--warning);
+        }
+
+        .prompt-title {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .writing-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .writing-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.1);
+        }
+
+        .word-counter {
+            text-align: right;
+            margin-top: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .word-count {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .grammar-block {
+            background: linear-gradient(to right, var(--light-green) 0%, rgba(232, 246, 243, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--success);
+            margin: 1.5rem 0;
+        }
+        
+        .lesson-tag {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .grammar-example {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .example-title {
+            font-weight: 600;
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        .speaking-prompts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .prompt-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .prompt-number {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--light-blue);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tip-icon {
+            position: absolute;
+            top: -12px;
+            left: 1.5rem;
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .tip-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .tip-content {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 1.5rem 0;
+        }
+
+        .vocab-table th {
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vocab-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vocab-table tr:hover td {
+            background: var(--light-bg);
+        }
+
+        .vocab-word {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .vocab-pronunciation {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .vocab-meaning {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-example {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--light-bg);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .easy-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .page-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--border);
+            background: white;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn-primary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        @media (max-width: 1200px) {
+            .easy-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .easy-sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 1.5rem;
+            }
+            
+            .easy-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .easy-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .user-progress {
+                margin-top: 0.5rem;
+            }
+            
+            .easy-content {
+                padding: 1.5rem;
+            }
+            
+            .lesson-main-title {
+                font-size: 2rem;
+            }
+            
+            .vocab-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .easy-footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .page-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .block-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .block-icon {
+                margin-right: 0;
+            }
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255, 107, 139, 0.1);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            margin: 1.5rem 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .exercise-block {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin: 2rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .exercise-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .exercise-title i {
+            color: var(--primary);
+        }
+
+        .word-bank {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            border: 2px dashed var(--primary-light);
+        }
+
+        .word-bank-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .word-bank-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .word-bank-item {
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .word-bank-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Задания - БЕЗ РАМОК ДЛЯ КАЖДОГО ПРЕДЛОЖЕНИЯ */
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .task-item {
+            background: transparent;
+            padding: 0.5rem 0;
+            border-left: none;
+            transition: all 0.2s ease;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .task-item.correct .sentence {
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        .task-item.incorrect .sentence {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .sentence {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text);
+            line-height: 1.5;
+            transition: color 0.2s ease;
+        }
+
+        .sentence strong {
+            color: var(--primary);
+            background: var(--light-blue);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .answer-input {
+            flex: 1;
+            max-width: 400px;
+            padding: 0.6rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            background: white;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(70, 136, 226, 0.1);
+        }
+
+        .status-icon {
+            font-size: 1.3rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        /* Кнопки */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            flex: 0 1 auto;
+            justify-content: center;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .reset-btn {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            flex: 0 1 auto;
+            justify-content: center;
+        }
+
+        .reset-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Прогресс */
+        .progress-bar {
+            background: var(--light-bg);
+            height: 8px;
+            border-radius: 10px;
+            margin: 1rem 0 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--primary));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Убираем лишние отступы */
+        .exercise-block {
+            padding: 1.5rem;
+        }
+        
+        .exercise-block + .exercise-block {
+            margin-top: 2rem;
+        }
+
+        /* Matching exercise styles */
+        .matching-section {
+            margin: 40px 0;
+        }
+
+        .matching-grid {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .headings-list {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .headings-list h4, .paragraphs-list h4 {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .heading-item {
+            background: white;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .heading-letter-small {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .paragraphs-match {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .match-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .match-number {
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .match-input {
+            width: 60px;
+            height: 40px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            text-transform: uppercase;
+        }
+
+        .match-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .match-input.correct {
+            border: 2px solid var(--success);
+            background: var(--light-green);
+        }
+
+        .match-input.incorrect {
+            border: 2px solid var(--accent);
+            background: #ffebee;
+        }
+
+        .match-text {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* Questions section */
+        .questions-section {
+            margin: 40px 0;
+        }
+
+        .question-item {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .question-number {
+            font-weight: 700;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        .question-text {
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .answer-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Vocabulary grid */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .vocab-item {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .vocab-word {
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .vocab-def {
+            color: var(--text-light);
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* Text styles */
+        .text-section {
+            background: var(--light-bg);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin: 30px 0;
+        }
+
+        .paragraph {
+            margin-bottom: 25px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .paragraph:last-child {
+            margin-bottom: 0;
+        }
+
+        .paragraph-letter {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .paragraph-text {
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .highlight {
+            background: var(--light-yellow);
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="easy-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open logo-icon"></i>
+                <span>Easy English</span>
+            </div>
+            
+            <div class="unit-info">
+                <div class="unit-title">Unit 1 • Social Media Addiction</div>
+                <div class="lesson-title" id="current-section">Social Media Addiction: Real or Fake?</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер -->
+    <div class="easy-container">
+        <!-- Боковая панель -->
+        <aside class="easy-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Lesson Contents</div>
+                <ul class="lesson-nav">
+                    <li class="lesson-nav-item active" data-target="grammar-section">
+                        <span class="lesson-number">1</span>
+                        Grammar Practice
+                    </li>
+                    <li class="lesson-nav-item" data-target="reading-section">
+                        <span class="lesson-number">2</span>
+                        Reading & Matching
+                    </li>
+                    <li class="lesson-nav-item" data-target="vocab-section">
+                        <span class="lesson-number">3</span>
+                        Vocabulary
+                    </li>
+                    <li class="lesson-nav-item" data-target="questions-section">
+                        <span class="lesson-number">4</span>
+                        Questions
+                    </li>
+                    <li class="lesson-nav-item" data-target="listening-section">
+                        <span class="lesson-number">4</span>
+                        Listening
+                    </li>
+                    <li class="lesson-nav-item" data-target="debate-section">
+                        <span class="lesson-number">5</span>
+                        Debate
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="easy-content">
+            
+            <!-- Заголовок урока -->
+            <header class="lesson-header">
+                <div class="lesson-tag">Lesson 1.3</div>
+                <h1 class="lesson-main-title">Social Media Addiction: Real or Fake?</h1>
+            </header>
+
+            <!-- КАРТИНКА В НАЧАЛЕ СТРАНИЦЫ -->
+            <div style="text-align: center; margin-bottom: 30px;">
+                <img src="pictures/Social-Media-Addiction-ai-1.jpg" 
+                     alt="Social Media Addiction" 
+                     style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+            </div>
+
+            <script>
+                // ===============================================
+                // 🔧 НАСТРОЙКА ПРАВИЛЬНЫХ ОТВЕТОВ ДЛЯ GRAMMAR
+                // ===============================================
+                const CORRECT_ANSWERS = {
+                    // Exercise 1 - Comparatives/Superlatives
+                    101: "shorter",        
+                    102: "the most popular",  
+                    103: "quicker", 
+                    104: "more",         
+                    105: "more addictive",
+                    106: "more reliable",
+                    107: "funnier",
+                    108: "as modern",
+                    109: "more",
+                    110: "more important",   
+
+                    // Exercise 2
+                    201: "b",
+                    202: "b",
+                    203: "b",
+                    204: "b",
+                    205: "b",
+                    206: "c",
+                    207: "b",
+                    208: "b",
+                    209: "b",
+                    210: "b",
+                    
+                    // Exercise 3 
+                    301: "easier",          
+                    302: "browsing",       
+                    303: "popular",         
+                    304: "businesses",     
+                    305: "development", 
+                    
+                    // Exercise 4 
+                    401: "Many people prefer to communicate via internet rather than face-to-face.",
+                    402: "The information available online can be unreliable.",
+                    403: "Online shopping is more convenient than traditional shops.",
+                    404: "He spends too much time on the computer, which affects his health.",
+                    405: "Social media is a great way to connect with friends and family."
+                };
+            </script>
+
+            <!-- ===== НАСТРОЙКА ОТВЕТОВ ДЛЯ MATCHING ===== -->
+            <script>
+                const CORRECT_MATCHES = {
+                    1: "A",  // Параграф 1 (A) → Introduction to the Problem
+                    2: "B",  // Параграф 2 (B) → Who Is Most Affected?
+                    3: "C",  // Параграф 3 (C) → The Science Behind the Addiction
+                    4: "D",  // Параграф 4 (D) → Real-Life Consequences
+                    5: "E",  // Параграф 5 (E) → Proposed Solutions and Hope
+                    6: "F"   // Параграф 6 (F) → Conclusion: Reclaiming Balance
+                };
+            </script>
+
+            <!-- Grammar Section -->
+            <section class="lesson-section" id="grammar-section">
+                <!-- Exercise 1 - Comparatives/Superlatives -->
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i>
+                        Ex. 1 Complete the sentences using comparatives or superlatives:
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="far fa-check-circle" style="color: var(--success);"></i> Правильно: <span id="correctCount1">0</span>/10</span>
+                        <span><i class="far fa-times-circle" style="color: var(--accent);"></i> Неправильно: <span id="incorrectCount1">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill1" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="tasksContainer1"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" id="checkAllBtn1">
+                            <i class="fas fa-check-circle"></i> Проверить все
+                        </button>
+                        <button class="reset-btn" id="resetBtn1">
+                            <i class="fas fa-redo-alt"></i> Сбросить
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 2 - Multiple Choice -->
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i>
+                        Ex. 2 Choose the correct form:
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="far fa-check-circle" style="color: var(--success);"></i> Правильно: <span id="correctCount2">0</span>/10</span>
+                        <span><i class="far fa-times-circle" style="color: var(--accent);"></i> Неправильно: <span id="incorrectCount2">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill2" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="tasksContainer2"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" id="checkAllBtn2">
+                            <i class="fas fa-check-circle"></i> Проверить все
+                        </button>
+                        <button class="reset-btn" id="resetBtn2">
+                            <i class="fas fa-redo-alt"></i> Сбросить
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ТЕКСТ ===== -->
+            <section class="lesson-section" id="reading-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h2 class="block-title">Social Media Addiction: A Growing Crisis</h2>
+                    </div>
+
+                    <div class="text-section">
+                        <div class="paragraph">
+                            <span class="paragraph-letter">A</span>
+                            <div class="paragraph-text">
+                                Social media addiction has become a <span class="highlight">widespread epidemic</span> in our digital age, affecting people of all ages across the globe. Platforms such as TikTok, Instagram, Snapchat, Facebook, and Twitter (now rebranded as X) dominate daily life. These apps are engineered with <span class="highlight">sophisticated algorithms</span> that keep users <span class="highlight">scrolling endlessly</span> through an infinite feed of short videos, memes, photos, and stories. What starts as casual browsing quickly turns into hours lost, as the <span class="highlight">constant stimulation</span> triggers dopamine releases in the brain – the same chemical linked to pleasure in gambling or drug use. This creates a <span class="highlight">euphoric rush</span>, making users crave more content and leading to <span class="highlight">compulsive behaviours</span> like checking notifications every few minutes, even at inappropriate times such as during family dinners, meetings, or bedtime. The scale of the problem is staggering. Recent surveys indicate that the average person spends over three hours a day on social media, with teenagers clocking up to 9 hours. This isn't harmless entertainment; it's a <span class="highlight">public health concern</span> rivaling smoking or obesity in its long-term impact.
+                            </div>
+                        </div>
+
+                        <div class="paragraph">
+                            <span class="paragraph-letter">B</span>
+                            <div class="paragraph-text">
+                                Teenagers and young adults are particularly <span class="highlight">vulnerable</span> to this addiction. At an age when identity formation and social bonds are crucial, they turn to apps for validation through likes, comments, and shares. Instead of <span class="highlight">neglecting</span> homework or sports, many prioritise virtual interactions, leading to plummeting grades and physical inactivity. <span class="highlight">Cyberbullying</span> <span class="highlight">exacerbates</span> the issue, thriving in anonymous comment sections where cruel remarks cause lasting emotional scars. Meanwhile, <span class="highlight">FOMO</span> (fear of missing out) grips users, compelling them to stay online 24/7 to catch viral challenges, celebrity drama, or friends' vacation posts. Parents often find children <span class="highlight">withdrawn</span> in their rooms, eyes glued to screens, preferring digital "friends" over real playground adventures. Adults aren't immune either. Professionals report <span class="highlight">diminished concentration</span> at work, doom-scrolling news feeds during breaks, which heightens <span class="highlight">anxiety levels</span>. The constant comparison to curated "perfect" lives on Instagram fosters feelings of inadequacy, contributing to clinical <span class="highlight">depression</span> and <span class="highlight">burnout</span>.
+                            </div>
+                        </div>
+
+                        <div class="paragraph">
+                            <span class="paragraph-letter">C</span>
+                            <div class="paragraph-text">
+                                Experts warn that social media companies deliberately design features to maximise <span class="highlight">engagement time</span>. <span class="highlight">Personalised algorithms</span> analyse your likes, shares, and watch history to serve hyper-relevant content, creating an illusion of endless novelty. Autoplay videos and infinite scrolls remove natural stopping points, making it <span class="highlight">increasingly difficult</span> to log off. Notification pings act as <span class="highlight">psychological hooks</span>, promising social rewards that deliver fleeting satisfaction. Neurologically, this mimics substance addiction. Heavy users experience <span class="highlight">withdrawal symptoms</span> – irritability, restlessness, or panic – when separated from their devices. Sleep disorders are common, as blue light disrupts melatonin production, while late-night scrolling fragments rest. Long-term, studies link excessive use to shrunk grey matter in brain areas controlling impulse and emotion.
+                            </div>
+                        </div>
+
+                        <div class="paragraph">
+                            <span class="paragraph-letter">D</span>
+                            <div class="paragraph-text">
+                                The ripple effects touch every aspect of life. Relationships suffer as couples argue over screen time, and face-to-face conversations dwindle. Productivity tanks in offices, with employees sneaking peeks at feeds, costing businesses billions annually. Physically, sedentary scrolling correlates with weight gain, eye strain, and poor posture – the so-called "tech neck." In schools, teachers battle distracted students who prioritise Snapchat streaks over lessons. Mental health crises surge, with helplines reporting spikes in calls from addicted youth. Tragically, extreme cases involve self-harm or suicide linked to online harassment. Economically, addiction fuels a trillion-dollar industry. Influencers earn fortunes from sponsored posts, while apps monetise user data through targeted ads. Yet, society pays the price in healthcare costs for treating anxiety disorders, therapy for depression, and lost productivity.
+                            </div>
+                        </div>
+
+                        <div class="paragraph">
+                            <span class="paragraph-letter">E</span>
+                            <div class="paragraph-text">
+                                Breaking free requires <span class="highlight">proactive measures</span>. Digital detoxes – structured screen-free periods, like weekends unplugged – help reset habits. Apps such as Freedom or Screen Time enforce limits, blocking sites after quotas. Parents can model behaviour by creating <span class="highlight">tech-free zones</span> at meals or bedtime. Education plays a vital role. Schools teach <span class="highlight">media literacy</span>, equipping students to spot <span class="highlight">manipulative tactics</span> like fake news or beauty filters. Governments push regulations, such as age limits or mandatory warnings on addictive features, similar to tobacco labels. Mindful use transforms apps from traps to tools. <span class="highlight">Curating feeds</span> – unfollowing toxic accounts and following educational creators – reduces negativity. Practices like the "one-minute rule" (pausing before opening an app) build self-control. Therapy, including cognitive behavioural techniques, addresses root causes for severe cases. Communities foster alternatives: book clubs, sports leagues, or hobby groups reclaim real-world connections. Tech innovators develop "healthy" apps prioritising well-being over endless engagement.
+                            </div>
+                        </div>
+
+                        <div class="paragraph">
+                            <span class="paragraph-letter">F</span>
+                            <div class="paragraph-text">
+                                Social media offers undeniable benefits – global connectivity, knowledge sharing, and activism – but unchecked addiction erodes our humanity. By understanding its mechanisms and adopting proactive measures, we can harness technology without letting it control us. The choice is ours: slaves to screens or masters of mindful digital lives. Healthier habits start today, one log-off at a time.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- КАРТИНКА 2-->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="pictures/1597942090219.jpeg" 
+                        alt="Social Media Addiction2" 
+                        style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
+            </section>
+
+            
+
+            <!-- ===== ЗАДАНИЕ НА СООТНЕСЕНИЕ ===== -->
+            <section class="lesson-section" id="matching-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h2 class="block-title">Task: Match Headings with Paragraphs</h2>
+                    </div>
+
+                    <div class="matching-section">
+                        <div class="matching-grid">
+                            <!-- Заголовки слева -->
+                            <div class="headings-list">
+                                <h4>📌 Headings</h4>
+                                <div class="heading-item"><span class="heading-letter-small">1</span> Introduction to the Problem</div>
+                                <div class="heading-item"><span class="heading-letter-small">2</span> Who Is Most Affected?</div>
+                                <div class="heading-item"><span class="heading-letter-small">3</span> The Science Behind the Addiction</div>
+                                <div class="heading-item"><span class="heading-letter-small">4</span> Real-Life Consequences</div>
+                                <div class="heading-item"><span class="heading-letter-small">5</span> Proposed Solutions and Hope</div>
+                                <div class="heading-item"><span class="heading-letter-small">6</span> Conclusion: Reclaiming Balance</div>
+                            </div>
+
+                            <!-- Абзацы для ввода букв -->
+                            <div class="paragraphs-match">
+                                <h4>📝 Enter the heading letter for each paragraph</h4>
+                                <div id="inputsContainer"></div>
+                            </div>
+                        </div>
+
+                        <!-- Прогресс и кнопки -->
+                        <div class="stats" style="justify-content: space-between; margin: 20px 0;">
+                            <span>Заполнено: <span id="filledCount">0</span>/6</span>
+                            <span>Правильно: <span id="correctMatchCount">0</span>/6</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="matchProgressBar" style="width: 0%;"></div>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="check-btn" id="checkMatchBtn">
+                                <i class="fas fa-check-circle"></i> Проверить соответствия
+                            </button>
+                            <button class="reset-btn" id="resetMatchBtn">
+                                <i class="fas fa-redo-alt"></i> Сбросить
+                            </button>
+                        </div>
+                        <div id="matchResult" class="result" style="margin-top: 20px;"></div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <!-- ===== ВОКАБУЛЯР ===== -->
+            <section class="lesson-section" id="vocab-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h2 class="block-title">Vocabulary (B2 Level)</h2>
+                    </div>
+
+                    <div class="vocab-section">
+                        <div class="vocab-grid">
+                            <div class="vocab-item"><span class="vocab-word">widespread</span> <div class="vocab-def">common in many places</div></div>
+                            <div class="vocab-item"><span class="vocab-word">sophisticated algorithms</span> <div class="vocab-def">advanced computer systems that learn</div></div>
+                            <div class="vocab-item"><span class="vocab-word">scrolling endlessly</span> <div class="vocab-def">continuously moving down a screen</div></div>
+                            <div class="vocab-item"><span class="vocab-word">constant stimulation</span> <div class="vocab-def">non-stop activity exciting the brain</div></div>
+                            <div class="vocab-item"><span class="vocab-word">euphoric rush</span> <div class="vocab-def">intense, short-lived happiness</div></div>
+                            <div class="vocab-item"><span class="vocab-word">compulsive behaviours</span> <div class="vocab-def">uncontrollable repeated actions</div></div>
+                            <div class="vocab-item"><span class="vocab-word">vulnerable</span> <div class="vocab-def">easily harmed or influenced</div></div>
+                            <div class="vocab-item"><span class="vocab-word">cyberbullying</span> <div class="vocab-def">online bullying or harassment</div></div>
+                            <div class="vocab-item"><span class="vocab-word">FOMO</span> <div class="vocab-def">fear of missing out</div></div>
+                            <div class="vocab-item"><span class="vocab-word">withdrawal symptoms</span> <div class="vocab-def">discomfort from stopping an addiction</div></div>
+                            <div class="vocab-item"><span class="vocab-word">media literacy</span> <div class="vocab-def">ability to critically analyse media</div></div>
+                            <div class="vocab-item"><span class="vocab-word">curating feeds</span> <div class="vocab-def">selecting content streams</div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ВОПРОСЫ ===== -->
+            <section class="lesson-section" id="questions-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h2 class="block-title">Answer these questions based on the "Social Media Addiction" text.</h2>
+                    </div>
+                    
+                    <div class="speaking-prompts">
+                        <div class="prompt-card">
+                            <div class="prompt-number">1</div>
+                            <p>What causes the euphoric rush that keeps people scrolling on social media platforms?</p>
+                        </div>
+                        
+                        <div class="prompt-card">
+                            <div class="prompt-number">2</div>
+                            <p>Why are teenagers particularly vulnerable to social media addiction, according to the text?</p>
+                        </div>
+                        
+                        <div class="prompt-card">
+                            <div class="prompt-number">3</div>
+                            <p>How do personalised algorithms contribute to the problem of addiction?</p>
+                        </div>
+                        
+                        <div class="prompt-card">
+                            <div class="prompt-number">4</div>
+                            <p>Name two proposed solutions for breaking free from social media addiction.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Listening Section -->
+            <section class="lesson-section" id="listening-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h2 class="block-title">Listening: Work-Life Balance</h2>
+                    </div>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/g8q-Nq-ajx8?si=djQaX-DpqE8FzC7X" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                    <div class="exercise-block">
+                        <div class="exercise-title">
+                            <span>Listening Comprehension</span>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">1</div>
+                            <div class="question-text">Do you agree with the video's analysis of social media's impact? Why or why not?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">2</div>
+                            <div class="question-text">The video likely presents research or expert opinions. Do you think it gives a balanced view, or does it emphasize one side more?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">3</div>
+                            <div class="question-text">Who do you think has the most responsibility for managing social media's effects on teens: the platforms, parents, schools, or teenagers themselves?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">4</div>
+                            <div class="question-text">Can you think of any potential positive effects of social media on mental health that the video might not have covered?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">5</div>
+                            <div class="question-text">How is the situation described in the video similar to or different from what you observe in your own community or country?</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MINI SPEAKING -->
+
+                <!-- КАРТИНКА 3-->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="pictures/Social-media-addiction-(1).jpg" 
+                        alt="Social Media Addiction3" 
+                        style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
+
+
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <span>Mini-speaking</span>
+                    </div>
+                    
+                    <div class="exercise-question">
+                        <div class="question-text">What do you think about this picture?</div>
+                    </div>
+                    
+                    <div class="exercise-question">
+                        <div class="question-text">How can you describe it?</div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- ДЕБАТЫ-->
+            <section class="lesson-section" id="debate-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h2 class="block-title">DEBATE: Should schools ban phones?</h2>
+                    </div>
+                    <!-- КАРТИНКА 4 (debate)-->
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <img src="pictures/20652 No title_V009_A.png.webp" 
+                            alt="Social Media Addiction3" 
+                            style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+            </section>
+
+            
+
+
+            <!-- Навигация -->
+            <div class="easy-footer">
+                <a class="nav-btn nav-btn-primary" href="lesson1.2.html">Previous Lesson</a>
+                
+                <div style="text-align: center;">
+                    <div style="font-weight: 600; color: var(--text);">Lesson Progress</div>
+                    <div style="color: var(--primary); font-weight: 700;" id="progress-text">Section 1 of 5</div>
+                </div>
+                
+                <a class="nav-btn nav-btn-primary" href="lesson1.4.html">Next Lesson</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // ===============================================
+        // ДАННЫЕ ДЛЯ УПРАЖНЕНИЙ
+        // ===============================================
+        
+        // Exercise 1
+        const exercises1 = [
+            { id: 101, text: "1. TikTok videos are __________ (short) than YouTube ones." },
+            { id: 102, text: "2. Instagram is __________ (popular) social network among teenagers today." },
+            { id: 103, text: "3. Twitter posts are __________ (quick) to write than Facebook updates." },
+            { id: 104, text: "4. This influencer has __________ (many) followers than that one." },
+            { id: 105, text: "5. Social media can be __________ (addictive) than reading books." },
+            { id: 106, text: "6. WhatsApp is __________ (reliable) for messaging than email." },
+            { id: 107, text: "7. Snapchat filters make photos look __________ (fun) than real life." },
+            { id: 108, text: "8. Facebook is not __________ (modern) as newer apps like BeReal." },
+            { id: 109, text: "9. Influencers earn __________ (much) money from sponsored posts nowadays." },
+            { id: 110, text: "10. Privacy on social media is __________ (important) than ever before." }
+        ];
+
+        // Exercise 2
+        const exercises2 = [
+            { id: 201, text: "1. TikTok is __________ than Instagram for short videos. a) popularer b) more popular c) the most popular" },
+            { id: 202, text: "2. This post got __________ likes than the previous one. a) few b) fewer c) fewest" },
+            { id: 203, text: "3. YouTube has __________ subscribers of all platforms. a) many b) the most c) more" },
+            { id: 204, text: "4. Messaging on WhatsApp is __________ than on SMS. a) fast b) faster c) the fastest" },
+            { id: 205, text: "5. Social media influencers are __________ than traditional celebrities nowadays. a) influencial b) more influential c) most influential" },
+            { id: 206, text: "6. Privacy settings on Facebook are not __________ as on Signal. a) good b) better c) as good" },
+            { id: 207, text: "7. Viral trends spread __________ on TikTok than anywhere else. a) quick b) more quickly c) quickest" },
+            { id: 208, text: "8. Stories on Instagram disappear __________ than permanent posts. a) fast b) faster c) the fastest" },
+            { id: 209, text: "9. Twitter (X) feels __________ overwhelming during big events. a) much b) more c) most" },
+            { id: 210, text: "10. Live streams are __________ exciting than pre-recorded videos. a) much b) more c) most" }
+        ];
+
+        // ===============================================
+        // ФУНКЦИИ ДЛЯ GRAMMAR УПРАЖНЕНИЙ
+        // ===============================================
+
+        function createTaskItem(task) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'task-item';
+            itemDiv.id = `task-${task.id}`;
+
+            const sentenceDiv = document.createElement('div');
+            sentenceDiv.className = 'sentence';
+            sentenceDiv.innerHTML = task.text;
+
+            const inputGroup = document.createElement('div');
+            inputGroup.className = 'input-group';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'answer-input';
+            input.id = `input-${task.id}`;
+            input.placeholder = 'Введите ответ...';
+            
+            const statusSpan = document.createElement('span');
+            statusSpan.className = 'status-icon';
+            statusSpan.id = `status-${task.id}`;
+            statusSpan.innerHTML = '⚪';
+
+            inputGroup.appendChild(input);
+            inputGroup.appendChild(statusSpan);
+            
+            itemDiv.appendChild(sentenceDiv);
+            itemDiv.appendChild(inputGroup);
+
+            return itemDiv;
+        }
+
+        function loadExercises(containerId, exercises) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = '';
+                exercises.forEach(task => {
+                    container.appendChild(createTaskItem(task));
+                });
+            }
+        }
+
+        function updateStats(exerciseNum, ids) {
+            let correct = 0;
+            let incorrect = 0;
+            
+            ids.forEach(id => {
+                const input = document.getElementById(`input-${id}`);
+                if (input && input.value.trim() !== '') {
+                    const userAnswer = input.value.trim().toLowerCase();
+                    const correctAnswer = CORRECT_ANSWERS[id].toLowerCase();
+                    
+                    if (userAnswer === correctAnswer) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                    }
+                }
+            });
+            
+            const correctSpan = document.getElementById(`correctCount${exerciseNum}`);
+            const incorrectSpan = document.getElementById(`incorrectCount${exerciseNum}`);
+            const progressFill = document.getElementById(`progressFill${exerciseNum}`);
+            
+            if (correctSpan) correctSpan.textContent = correct;
+            if (incorrectSpan) incorrectSpan.textContent = incorrect;
+            
+            const total = ids.length;
+            const progress = (correct / total) * 100;
+            if (progressFill) progressFill.style.width = progress + '%';
+        }
+
+        function checkAnswer(taskId, exerciseNum, ids) {
+            const input = document.getElementById(`input-${taskId}`);
+            const status = document.getElementById(`status-${taskId}`);
+            const taskItem = document.getElementById(`task-${taskId}`);
+            
+            if (!input || !status || !taskItem) return false;
+            
+            const userAnswer = input.value.trim();
+            
+            if (userAnswer === '') {
+                status.innerHTML = '⚪';
+                taskItem.classList.remove('correct', 'incorrect');
+                updateStats(exerciseNum, ids);
+                return false;
+            }
+
+            const correctAnswer = CORRECT_ANSWERS[taskId];
+            
+            if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+                status.innerHTML = '✅';
+                taskItem.classList.add('correct');
+                taskItem.classList.remove('incorrect');
+            } else {
+                status.innerHTML = '❌';
+                taskItem.classList.add('incorrect');
+                taskItem.classList.remove('correct');
+            }
+            
+            updateStats(exerciseNum, ids);
+            return true;
+        }
+
+        function checkAllAnswers(exerciseNum, ids) {
+            ids.forEach(id => {
+                checkAnswer(id, exerciseNum, ids);
+            });
+        }
+
+        function resetExercise(exerciseNum, ids) {
+            ids.forEach(id => {
+                const input = document.getElementById(`input-${id}`);
+                const status = document.getElementById(`status-${id}`);
+                const taskItem = document.getElementById(`task-${id}`);
+                
+                if (input) input.value = '';
+                if (status) status.innerHTML = '⚪';
+                if (taskItem) {
+                    taskItem.classList.remove('correct', 'incorrect');
+                }
+            });
+            updateStats(exerciseNum, ids);
+        }
+
+        // ===============================================
+        // ФУНКЦИИ ДЛЯ MATCHING УПРАЖНЕНИЯ
+        // ===============================================
+
+        const inputsContainer = document.getElementById('inputsContainer');
+        
+        function renderInputs() {
+            if (!inputsContainer) return;
+            
+            inputsContainer.innerHTML = '';
+            
+            for (let i = 1; i <= 6; i++) {
+                const matchDiv = document.createElement('div');
+                matchDiv.className = 'match-item';
+                
+                const numberSpan = document.createElement('span');
+                numberSpan.className = 'match-number';
+                numberSpan.textContent = i;
+                
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'match-input';
+                input.id = `match-input-${i}`;
+                input.placeholder = 'A-F';
+                input.maxLength = 1;
+                input.setAttribute('data-paragraph', i);
+                
+                const textSpan = document.createElement('span');
+                textSpan.className = 'match-text';
+                textSpan.textContent = 'Параграф ' + String.fromCharCode(64 + i);
+                
+                matchDiv.appendChild(numberSpan);
+                matchDiv.appendChild(input);
+                matchDiv.appendChild(textSpan);
+                
+                inputsContainer.appendChild(matchDiv);
+            }
+        }
+
+        function updateMatchStats() {
+            let filled = 0;
+            let correct = 0;
+            
+            for (let i = 1; i <= 6; i++) {
+                const input = document.getElementById(`match-input-${i}`);
+                if (input && input.value.trim() !== '') {
+                    filled++;
+                    
+                    const userAnswer = input.value.trim().toUpperCase();
+                    if (userAnswer === CORRECT_MATCHES[i]) {
+                        correct++;
+                    }
+                }
+            }
+            
+            const filledSpan = document.getElementById('filledCount');
+            const correctSpan = document.getElementById('correctMatchCount');
+            const progressBar = document.getElementById('matchProgressBar');
+            
+            if (filledSpan) filledSpan.textContent = filled;
+            if (correctSpan) correctSpan.textContent = correct;
+            
+            const progress = (correct / 6) * 100;
+            if (progressBar) progressBar.style.width = progress + '%';
+        }
+
+        function checkMatches() {
+            let allFilled = true;
+            let correct = 0;
+            
+            for (let i = 1; i <= 6; i++) {
+                const input = document.getElementById(`match-input-${i}`);
+                
+                if (!input.value.trim()) {
+                    allFilled = false;
+                    input.classList.remove('correct', 'incorrect');
+                } else {
+                    const userAnswer = input.value.trim().toUpperCase();
+                    
+                    if (userAnswer === CORRECT_MATCHES[i]) {
+                        correct++;
+                        input.classList.add('correct');
+                        input.classList.remove('incorrect');
+                    } else {
+                        input.classList.add('incorrect');
+                        input.classList.remove('correct');
+                    }
+                }
+            }
+            
+            const resultDiv = document.getElementById('matchResult');
+            
+            if (!allFilled) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Заполни все поля!';
+            } else if (correct === 6) {
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> Все правильно! Молодец! 🎉';
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `<i class="fas fa-times-circle"></i> Правильно: ${correct}/6. Неправильные ответы подсвечены красным.`;
+            }
+            
+            updateMatchStats();
+        }
+
+        function resetMatches() {
+            for (let i = 1; i <= 6; i++) {
+                const input = document.getElementById(`match-input-${i}`);
+                if (input) {
+                    input.value = '';
+                    input.classList.remove('correct', 'incorrect');
+                }
+            }
+            
+            const resultDiv = document.getElementById('matchResult');
+            if (resultDiv) {
+                resultDiv.className = 'result';
+                resultDiv.innerHTML = '';
+            }
+            
+            updateMatchStats();
+        }
+
+        // ===============================================
+        // ИНИЦИАЛИЗАЦИЯ
+        // ===============================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Загружаем grammar упражнения
+            loadExercises('tasksContainer1', exercises1);
+            loadExercises('tasksContainer2', exercises2);
+
+            // IDs для grammar упражнений
+            const ids1 = exercises1.map(e => e.id);
+            const ids2 = exercises2.map(e => e.id);
+
+            // Добавляем обработчики для Exercise 1
+            document.getElementById('checkAllBtn1')?.addEventListener('click', () => checkAllAnswers(1, ids1));
+            document.getElementById('resetBtn1')?.addEventListener('click', () => resetExercise(1, ids1));
+
+            // Добавляем обработчики для Exercise 2
+            document.getElementById('checkAllBtn2')?.addEventListener('click', () => checkAllAnswers(2, ids2));
+            document.getElementById('resetBtn2')?.addEventListener('click', () => resetExercise(2, ids2));
+
+            // Добавляем обработчики для отдельных полей ввода в grammar
+            const allIds = [...ids1, ...ids2];
+            allIds.forEach(id => {
+                const input = document.getElementById(`input-${id}`);
+                if (input) {
+                    input.addEventListener('keypress', (event) => {
+                        if (event.key === 'Enter') {
+                            const taskId = parseInt(event.target.id.split('-')[1]);
+                            let exerciseNum = ids1.includes(taskId) ? 1 : 2;
+                            checkAnswer(taskId, exerciseNum, exerciseNum === 1 ? ids1 : ids2);
+                        }
+                    });
+                    
+                    input.addEventListener('blur', (event) => {
+                        const taskId = parseInt(event.target.id.split('-')[1]);
+                        let exerciseNum = ids1.includes(taskId) ? 1 : 2;
+                        checkAnswer(taskId, exerciseNum, exerciseNum === 1 ? ids1 : ids2);
+                    });
+                }
+            });
+
+            // Инициализация matching упражнения
+            renderInputs();
+            
+            // Добавляем обработчики для matching
+            document.getElementById('checkMatchBtn')?.addEventListener('click', checkMatches);
+            document.getElementById('resetMatchBtn')?.addEventListener('click', resetMatches);
+
+            // Обновляем статистику matching при вводе
+            for (let i = 1; i <= 6; i++) {
+                const input = document.getElementById(`match-input-${i}`);
+                if (input) {
+                    input.addEventListener('input', function() {
+                        this.value = this.value.toUpperCase();
+                        this.classList.remove('correct', 'incorrect');
+                        updateMatchStats();
+                    });
+                }
+            }
+
+            // Навигация по секциям
+            const sections = [
+                { id: 'grammar-section', title: 'Grammar Practice', number: 1, navSelector: '[data-target="grammar-section"]' },
+                { id: 'reading-section', title: 'Reading & Matching', number: 2, navSelector: '[data-target="reading-section"]' },
+                { id: 'questions-section', title: 'Questions', number: 3, navSelector: '[data-target="questions-section"]' },
+                { id: 'vocab-section', title: 'Vocabulary', number: 4, navSelector: '[data-target="vocab-section"]' }
+            ];
+
+            let currentSectionIndex = 0;
+
+            function navigateToSection(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    document.querySelectorAll('.lesson-nav-item').forEach(item => item.classList.remove('active'));
+                    const sectionData = sections.find(s => s.id === sectionId);
+                    if (sectionData) {
+                        const navItem = document.querySelector(sectionData.navSelector);
+                        if (navItem) navItem.classList.add('active');
+                        document.getElementById('current-section').textContent = sectionData.title;
+                        currentSectionIndex = sections.findIndex(s => s.id === sectionId);
+                        document.getElementById('progress-text').textContent = `Section ${currentSectionIndex + 1} of ${sections.length}`;
+                    }
+                }
+            }
+
+            document.querySelectorAll('.lesson-nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) navigateToSection(targetId);
+                });
+            });
+
+            // Scroll handling
+            function handleScroll() {
+                const scrollPosition = window.scrollY + 150;
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const section = document.getElementById(sections[i].id);
+                    if (section && scrollPosition >= section.offsetTop) {
+                        if (currentSectionIndex !== i) {
+                            currentSectionIndex = i;
+                            document.querySelectorAll('.lesson-nav-item').forEach(item => item.classList.remove('active'));
+                            const navItem = document.querySelector(sections[i].navSelector);
+                            if (navItem) navItem.classList.add('active');
+                            document.getElementById('current-section').textContent = sections[i].title;
+                            document.getElementById('progress-text').textContent = `Section ${i + 1} of ${sections.length}`;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+            document.getElementById('progress-text').textContent = `Section 1 of ${sections.length}`;
+        });
+    </script>
+</body>
+</html>

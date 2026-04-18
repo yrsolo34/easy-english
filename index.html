@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy English | Interactive English Textbook</title>
+    
+    <style>
+        /* ====== ОСНОВНЫЕ СТИЛИ ====== */
+        :root {
+            --primary-blue: #4688e2;
+            --primary-light: #5d9cff;
+            --primary-dark: #3a72c4;
+            --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-blue: linear-gradient(135deg, #4688e2 0%, #5d9cff 100%);
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #333;
+            --text-dark: #2c3e50;
+            --text-light: #555;
+            --white: #ffffff;
+            --shadow: 0 5px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "BBH Hegarty", -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ====== ШАПКА ====== */
+        header {
+            background: var(--gradient-blue);
+            width: 100%;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding: 15px 40px;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(70, 136, 226, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        h2 {
+            font-family: "BBH Hegarty", sans-serif;
+            font-weight: 500;
+            font-size: 2.2rem;
+            color: var(--white);
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* ====== ГЛАВНЫЙ ЭКРАН ====== */
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, #f8fbff 0%, #eef5ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(70, 136, 226, 0.05) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        h1 {
+            font-family: "BBH Hegarty", sans-serif;
+            font-weight: 300;
+            font-size: 4.5rem;
+            color: var(--primary-blue);
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ====== ОСНОВНОЙ КОНТЕНТ ====== */
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            color: var(--primary-light);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .description {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+
+        .feature i {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+        }
+
+        .video-section {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.02);
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ====== ПРЕИМУЩЕСТВА ====== */
+        .benefits {
+            padding: 80px 40px;
+            background: var(--white);
+        }
+
+        h3 {
+            font-family: "BBH Hegarty", sans-serif;
+            font-weight: 400;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 50px;
+        }
+
+        .reasons {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .reason-item {
+            background: var(--white);
+            padding: 40px 35px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-blue);
+        }
+
+        .reason-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--primary-blue);
+        }
+
+        .reason-title {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .reason-title i {
+            font-size: 1.8rem;
+        }
+
+        .reason-text {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-left: 40px;
+        }
+
+        /* ====== МОДУЛИ ====== */
+        .modules {
+            background: var(--gradient-purple);
+            padding: 80px 20px;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .modules h1 {
+            color: var(--white);
+            margin-bottom: 50px;
+        }
+
+        .container_menu {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .menu {
+            background: var(--white);
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+        }
+
+        .menu-section {
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .menu-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            padding: 25px 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .section-header:hover {
+            background: var(--light-gray);
+        }
+
+        .section-header.active {
+            background: var(--light-gray);
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .checkmark {
+            width: 26px;
+            height: 26px;
+            border: 2px solid var(--primary-blue);
+            border-radius: 6px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .checkmark:hover {
+            background: rgba(70, 136, 226, 0.1);
+        }
+
+        .checkmark.checked:before {
+            content: '✓';
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .section-title {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .main_points {
+            font-family: "BBH Hegarty", sans-serif;
+            color: var(--text-dark);
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .section-title:after {
+            content: '▼';
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            transition: transform 0.3s ease;
+            margin-left: 15px;
+        }
+
+        .section-header.active .section-title:after {
+            transform: rotate(180deg);
+        }
+
+        .counter {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-left: 20px;
+        }
+
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: var(--white);
+        }
+
+        .section-list {
+            list-style-type: none;
+            padding: 0 30px 25px 85px;
+        }
+
+        .section-list li {
+            padding: 15px 0;
+            border-bottom: 1px dashed var(--medium-gray);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-list li:last-child {
+            border-bottom: none;
+        }
+
+        .section-list li:before {
+            content: '•';
+            color: var(--primary-blue);
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: 15px;
+        }
+
+        .link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 0;
+        }
+
+        .link:hover {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        /* ====== ФУТЕР ====== */
+        .elegant-footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: var(--white);
+            padding: 70px 0 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(70, 136, 226, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .footer-decoration-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .footer-brand {
+            font-size: 2.2rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, #5d9cff, #4688e2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-tagline {
+            color: #aaa;
+            font-size: 1.2rem;
+            line-height: 1.7;
+            font-weight: 300;
+            max-width: 500px;
+        }
+
+        .telegram-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #4688e2 0%, #5d9cff 100%);
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(70, 136, 226, 0.3);
+            width: fit-content;
+        }
+
+        .telegram-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(70, 136, 226, 0.4);
+        }
+
+        .telegram-cta i {
+            font-size: 1.4rem;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .developer-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .developer-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .developer-title i {
+            color: #5d9cff;
+        }
+
+        .developer-info {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .developer-info p {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            color: #5d9cff;
+            font-weight: 500;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copyright {
+            letter-spacing: 0.5px;
+            font-weight: 300;
+        }
+
+        /* ====== АДАПТИВНОСТЬ ====== */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1.4rem;
+            }
+            
+            h3 {
+                font-size: 2.2rem;
+            }
+            
+            .section-list {
+                padding-left: 30px;
+                padding-right: 20px;
+            }
+            
+            .telegram-cta {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .reason-item {
+                padding: 30px 25px;
+            }
+            
+            .reason-title {
+                font-size: 1.5rem;
+            }
+            
+            .reason-text {
+                font-size: 1.1rem;
+                margin-left: 30px;
+            }
+        }
+
+        /* ====== АНИМАЦИИ ====== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-book-open logo-icon"></i>
+            <h2>Easy English</h2>
+        </div>
+        <nav class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#benefits" class="nav-link">Benefits</a>
+            <a href="#modules" class="nav-link">Modules</a>
+            <a href="#footer" class="nav-link">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero" id="about">
+        <h1 class="fade-in">About textbook</h1>
+        <p class="hero-subtitle fade-in delay-1">Your interactive guide to mastering English</p>
+        
+        <div class="container fade-in delay-2">
+            <div class="text-section">
+                <h2 class="welcome-title">Welcome to the Easy English</h2>
+                <p class="tagline">Your interactive online textbook for free English</p>
+                <p class="description">Discover the joy of learning English with our complete online tutorial! Created specifically for intermediate students, this resource turns grammar, vocabulary, and everyday conversations into fascinating mini-lessons. Prepare for exams, work, or travel — our structured modules build confidence step by step.</p>
+                
+                <div class="features">
+                    <div class="feature"><i class="fas fa-check-circle"></i> Interactive lessons with audio and video</div>
+                    <div class="feature"><i class="fas fa-check-circle"></i> Real-world topics and conversations</div>
+                    <div class="feature"><i class="fas fa-check-circle"></i> Structured learning path</div>
+                </div>
+            </div>
+            
+            <div class="video-section">
+                <div class="video-container">
+                    <video autoplay muted loop playsinline>
+                        <source src="video-1200-compressed.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="benefits" id="benefits">
+        <h3 class="fade-in">Why choose our textbook?</h3>
+        
+        <div class="reasons">
+            <div class="reason-item fade-in delay-1">
+                <h4 class="reason-title"><i class="fas fa-comments"></i> Interactive Lessons</h4>
+                <p class="reason-text">Practice listening, speaking, reading and writing with audio, video and tests.</p>
+            </div>
+            
+            <div class="reason-item fade-in delay-2">
+                <h4 class="reason-title"><i class="fas fa-newspaper"></i> Real and very interesting topics</h4>
+                <p class="reason-text">From business letters and literature analysis to discussion of memes and Internet culture.</p>
+            </div>
+            
+            <div class="reason-item fade-in delay-3">
+                <h4 class="reason-title"><i class="fas fa-users"></i> Live communication, not cramming</h4>
+                <p class="reason-text">Talk about TikTok challenges and VR games using real slang - confidence in speech will grow in weeks.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модули -->
+    <section class="modules" id="modules">
+        <h1 class="fade-in">Modules 10th grade</h1>
+        
+        <div class="container_menu">
+            <div class="menu fade-in delay-1">
+                <div class="menu-section">
+                    <div class="section-header" onclick="toggleSection(0)">
+                        <div class="checkmark" onclick="toggleCheckmark(event, 0)"></div>
+                        <div class="section-title">
+                            <p class="main_points">Module 1:&nbsp;&nbsp;&nbsp;&nbsp; Digital Life</p>
+                            <span class="counter">7</span>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li><a class="link" href="lesson1.1.html">Lesson 1.1: &nbsp;&nbsp;&nbsp;&nbsp;The Internet Revolution</a></li>
+                            <li><a class="link" href="lesson1.2.html">Lesson 1.2: &nbsp;&nbsp;&nbsp;&nbsp;Tit Tok and Viral Culture</a></li>
+                            <li><a class="link" href="lesson1.3.html">Lesson 1.3: &nbsp;&nbsp;&nbsp;&nbsp;Social Media Addiction: Real or Fake?</a></li>
+                            <li><a class="link" href="lesson1.4.html">Lesson 1.4: &nbsp;&nbsp;&nbsp;&nbsp;Influencers & Personal Branding</a></li>
+                            <li><a class="link" href="lesson1.5.html">Lesson 1.5: &nbsp;&nbsp;&nbsp;&nbsp;Privacy vs. Entertainment</a></li>
+                            <li><a class="link" href="lesson1.6.html">Lesson 1.6: &nbsp;&nbsp;&nbsp;&nbsp;Gaming & Esports</a></li>
+                            <li><a class="link" href="lesson1.7.html">Lesson 1.7: &nbsp;&nbsp;&nbsp;&nbsp;AI in Your Pocket</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="section-header" onclick="toggleSection(1)">
+                        <div class="checkmark" onclick="toggleCheckmark(event, 1)"></div>
+                        <div class="section-title">
+                            <p class="main_points">Module 2:&nbsp;&nbsp;&nbsp;&nbsp; Global Trends & Culture</p>
+                            <span class="counter">6</span>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li><a class="link" href="fish.html">Lesson 2.1: &nbsp;&nbsp;&nbsp;&nbsp;Fan Culture: From BTS ARMY to BookTok</a></li>
+                            <li><a class="link" href="fish.html">Lesson 2.2: &nbsp;&nbsp;&nbsp;&nbsp;Netflix & Streaming Culture</a></li>
+                            <li><a class="link" href="fish.html">Lesson 2.3: &nbsp;&nbsp;&nbsp;&nbsp;Fast Fashion vs. Sustainable Style</a></li>
+                            <li><a class="link" href="fish.html">Lesson 2.4: &nbsp;&nbsp;&nbsp;&nbsp;Music Streaming Wars</a></li>
+                            <li><a class="link" href="fish.html">Lesson 2.5: &nbsp;&nbsp;&nbsp;&nbsp;Celebrity Scandals & Cancel Culture</a></li>
+                            <li><a class="link" href="fish.html">Lesson 2.6: &nbsp;&nbsp;&nbsp;&nbsp;Remote Work Revolution</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="section-header" onclick="toggleSection(2)">
+                        <div class="checkmark" onclick="toggleCheckmark(event, 2)"></div>
+                        <div class="section-title">
+                            <p class="main_points">Module 3:&nbsp;&nbsp;&nbsp;&nbsp; Future & Space</p>
+                            <span class="counter">6</span>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li><a class="link" href="fish.html">Lesson 3.1: &nbsp;&nbsp;&nbsp;&nbsp;SpaceX & Mars Mission</a></li>
+                            <li><a class="link" href="fish.html">Lesson 3.2: &nbsp;&nbsp;&nbsp;&nbsp;Jobs of the Future </a></li>
+                            <li><a class="link" href="fish.html">Lesson 3.3: &nbsp;&nbsp;&nbsp;&nbsp;Climate Solutions & Green Tech</a></li>
+                            <li><a class="link" href="fish.html">Lesson 3.4: &nbsp;&nbsp;&nbsp;&nbsp;Quantum Computing & Science Breakthrough</a></li>
+                            <li><a class="link" href="fish.html">Lesson 3.5: &nbsp;&nbsp;&nbsp;&nbsp;Virtual Reality & Metaverse</a></li>
+                            <li><a class="link" href="fish.html">Lesson 3.6: &nbsp;&nbsp;&nbsp;&nbsp;Biotech & Genetic Engineering</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="menu-section">
+                    <div class="section-header" onclick="toggleSection(3)">
+                        <div class="checkmark" onclick="toggleCheckmark(event, 3)"></div>
+                        <div class="section-title">
+                            <p class="main_points">Module 4:&nbsp;&nbsp;&nbsp;&nbsp; Social Issues & Activism</p>
+                            <span class="counter">5</span>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li><a class="link" href="fish.html">Lesson 4.1: &nbsp;&nbsp;&nbsp;&nbsp;Mental Health Matters</a></li>
+                            <li><a class="link" href="fish.html">Lesson 4.2: &nbsp;&nbsp;&nbsp;&nbsp;Body Positive vs Toxic</a></li>
+                            <li><a class="link" href="fish.html">Lesson 4.3: &nbsp;&nbsp;&nbsp;&nbsp;Racial Justice</a></li>
+                            <li><a class="link" href="fish.html">Lesson 4.4: &nbsp;&nbsp;&nbsp;&nbsp;Youth Activism & Climate Strike</a></li>
+                            <li><a class="link" href="fish.html">Lesson 4.5: &nbsp;&nbsp;&nbsp;&nbsp;Cyberbullying & Digital Safety</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <div class="section-header" onclick="toggleSection(4)">
+                        <div class="checkmark" onclick="toggleCheckmark(event, 4)"></div>
+                        <div class="section-title">
+                            <p class="main_points">Module 5:&nbsp;&nbsp;&nbsp;&nbsp; Economy & Lifestyle</p>
+                            <span class="counter">6</span>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li><a class="link" href="fish.html">Lesson 5.1: &nbsp;&nbsp;&nbsp;&nbsp;Cryptocurrency & NFT</a></li>
+                            <li><a class="link" href="fish.html">Lesson 5.2: &nbsp;&nbsp;&nbsp;&nbsp;Side Hustles for Teens</a></li>
+                            <li><a class="link" href="fish.html">Lesson 5.3: &nbsp;&nbsp;&nbsp;&nbsp;Sustainable Consumption</a></li>
+                            <li><a class="link" href="fish.html">Lesson 5.4: &nbsp;&nbsp;&nbsp;&nbsp;Gig Economy & Remote Work</a></li>
+                            <li><a class="link" href="fish.html">Lesson 5.5: &nbsp;&nbsp;&nbsp;&nbsp;Financial Literacy for Teens</a></li>
+                            <li><a class="link" href="fish.html">Lesson 5.6: &nbsp;&nbsp;&nbsp;&nbsp;Entrepreneurship & Startup Culture</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menu-section">
+                    <div class="section-header" onclick="toggleSection(5)">
+                        <div class="checkmark" onclick="toggleCheckmark(event, 5)"></div>
+                        <div class="section-title">
+                            <p class="main_points">Module 6:&nbsp;&nbsp;&nbsp;&nbsp; Extreme & Adventure</p>
+                            <span class="counter">6</span>
+                        </div>
+                    </div>
+                    <div class="section-content">
+                        <ul class="section-list">
+                            <li><a class="link" href="fish.html">Lesson 6.1: &nbsp;&nbsp;&nbsp;&nbsp;Extreme Sports</a></li>
+                            <li><a class="link" href="fish.html">Lesson 6.2: &nbsp;&nbsp;&nbsp;&nbsp;Digital Nomads & Travel Hacks</a></li>
+                            <li><a class="link" href="fish.html">Lesson 6.3: &nbsp;&nbsp;&nbsp;&nbsp;Survival & Outdoor Skills</a></li>
+                            <li><a class="link" href="fish.html">Lesson 6.4: &nbsp;&nbsp;&nbsp;&nbsp;Urban Exploration & Street Culture </a></li>
+                            <li><a class="link" href="fish.html">Lesson 6.5: &nbsp;&nbsp;&nbsp;&nbsp;Esports Tournaments & Gaming Competitions</a></li>
+                            <li><a class="link" href="fish.html">Lesson 6.6: &nbsp;&nbsp;&nbsp;&nbsp;Challenges & Viral Stunts</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="elegant-footer" id="footer">
+        <div class="footer-decoration"></div>
+        <div class="footer-decoration-2"></div>
+        
+        <div class="footer-content fade-in">
+            <div class="footer-left">
+                <div class="footer-brand">Easy English</div>
+                <p class="footer-tagline">Your gateway to mastering English through interactive lessons, practical exercises, and immersive learning experiences.</p>
+                
+                <a href="ссыдка на тг" target="_blank" class="telegram-cta">
+                    <i class="fab fa-telegram-plane"></i>
+                    Join Our Telegram Channel
+                </a>
+            </div>
+            
+            <div class="footer-right">
+                <div class="developer-card">
+                    <div class="developer-title">
+                        <i class="fas fa-code"></i>
+                        Development Team
+                    </div>
+                    <div class="developer-info">
+                        <p>Designed and developed with passion by the <span class="highlight">Easy English Development Team</span>.</p>
+                        <p>Our mission is to create accessible, engaging, and effective language learning tools for students worldwide.</p>
+                        <p><span class="highlight">Contact:&nbsp;&nbsp;</span> dev@easyenglish.com</p>
+                        <p><span class="highlight">Version:&nbsp;&nbsp;</span> 2.4.1</p>
+                        <p>© 2025 Easy English Platform. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                Easy English Platform © 2025 | Transforming English Learning Through Technology
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Раскрытие/скрытие модулей
+        function toggleSection(sectionIndex) {
+            const sectionHeader = document.querySelectorAll('.section-header')[sectionIndex];
+            const sectionContent = sectionHeader.nextElementSibling;
+            
+            sectionHeader.classList.toggle('active');
+            
+            if (sectionHeader.classList.contains('active')) {
+                sectionContent.style.maxHeight = sectionContent.scrollHeight + 'px';
+            } else {
+                sectionContent.style.maxHeight = '0';
+            }
+        }
+        
+        // Переключение галочек
+        function toggleCheckmark(event, sectionIndex) {
+            event.stopPropagation();
+            const checkmark = document.querySelectorAll('.checkmark')[sectionIndex];
+            checkmark.classList.toggle('checked');
+        }
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Открываем первый модуль по умолчанию
+        document.addEventListener('DOMContentLoaded', function() {
+            //toggleSection(0);
+            
+            // Анимация появления элементов при прокрутке
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.reason-item, .menu, .footer-content').forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // Гарантируем автовоспроизведение видео
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('video');
+            video.play().catch(e => {
+                console.log("Autoplay blocked");
+            });
+        });
+    </script>
+</body>
+</html>

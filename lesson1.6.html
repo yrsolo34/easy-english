@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy English | Online Competitive Gaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4688e2;
+            --primary-light: #5d9cff;
+            --secondary: #166088;
+            --accent: #FF6B6B;
+            --accent-light: #FF8E8E;
+            --success: #4CAF7D;
+            --success-light: #E8F5E9;
+            --danger: #f44336;
+            --danger-light: #FFEBEE;
+            --warning: #FFB74D;
+            --light-bg: #F9FAFC;
+            --light-blue: #EDF2F7;
+            --light-green: #F0FFF4;
+            --light-yellow: #FFF9E6;
+            --light-orange: #FFEFE6;
+            --light-purple: #F5F0FF;
+            --border: #E2E8F0;
+            --text: #2D3748;
+            --text-light: #718096;
+            --radius: 10px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .lesson-main-title {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .easy-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1.5rem 2rem;
+            color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .unit-info {
+            text-align: center;
+        }
+
+        .unit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .user-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .easy-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .easy-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 1px solid var(--border);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .lesson-nav {
+            list-style: none;
+        }
+
+        .lesson-nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            user-select: none;
+        }
+
+        .lesson-nav-item:hover {
+            background: var(--light-blue);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .lesson-nav-item.active {
+            background: var(--light-blue);
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .lesson-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .active .lesson-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .easy-content {
+            flex: 1;
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .lesson-section {
+            scroll-margin-top: 120px;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-section:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-header {
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-tag {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-main-title {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lesson-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .content-block {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .block-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .block-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .block-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .reading-block {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .reading-text {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .highlight-term {
+            background-color: rgba(255, 107, 107, 0.1);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .exercise-block {
+            background: var(--light-bg);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .exercise-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+
+        .exercise-question {
+            margin-bottom: 1.25rem;
+            padding-left: 1.75rem;
+            position: relative;
+        }
+
+        .question-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        .question-text {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .answer-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .answer-toggle:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .answer-toggle.active {
+            background: var(--secondary);
+        }
+
+        .answer-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        .answer-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .answer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .answer-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .answer-list {
+            list-style-type: none;
+        }
+
+        .answer-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .answer-list li:last-child {
+            border-bottom: none;
+        }
+
+        .correct-answer {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .answer-explanation {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .writing-block {
+            margin: 2rem 0;
+        }
+
+        .writing-prompt {
+            background: linear-gradient(to right, var(--light-yellow) 0%, rgba(255, 249, 230, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--warning);
+        }
+
+        .prompt-title {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .writing-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .writing-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+
+        .word-counter {
+            text-align: right;
+            margin-top: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .word-count {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .speaking-prompts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .prompt-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .prompt-number {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--light-blue);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tip-icon {
+            position: absolute;
+            top: -12px;
+            left: 1.5rem;
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .tip-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .tip-content {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 1.5rem 0;
+        }
+
+        .vocab-table th {
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vocab-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vocab-table tr:hover td {
+            background: var(--light-bg);
+        }
+
+        .vocab-word {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .vocab-pronunciation {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .vocab-meaning {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-example {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--light-bg);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .easy-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .page-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--border);
+            background: white;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn-primary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        @media (max-width: 1200px) {
+            .easy-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .easy-sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 1.5rem;
+            }
+            
+            .easy-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .easy-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .user-progress {
+                margin-top: 0.5rem;
+            }
+            
+            .easy-content {
+                padding: 1.5rem;
+            }
+            
+            .lesson-main-title {
+                font-size: 2rem;
+            }
+            
+            .vocab-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .easy-footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .page-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .block-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .block-icon {
+                margin-right: 0;
+            }
+        }
+
+        /* Styles for interactive exercises */
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .task-item {
+            background: transparent;
+            padding: 0.75rem;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+        }
+
+        .task-item.correct {
+            background-color: var(--success-light);
+            border-left-color: var(--success);
+        }
+
+        .task-item.incorrect {
+            background-color: var(--danger-light);
+            border-left-color: var(--danger);
+        }
+
+        .sentence {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .sentence strong {
+            color: var(--primary);
+            background: var(--light-blue);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .answer-input {
+            flex: 1;
+            max-width: 400px;
+            padding: 0.6rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            background: white;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(70, 136, 226, 0.1);
+        }
+
+        .task-item.correct .answer-input {
+            border-color: var(--success);
+            background-color: var(--success-light);
+        }
+
+        .task-item.incorrect .answer-input {
+            border-color: var(--danger);
+            background-color: var(--danger-light);
+        }
+
+        .options-list {
+            margin: 0.5rem 0 0 1.5rem;
+        }
+
+        .option-item {
+            margin: 0.25rem 0;
+        }
+
+        .status-icon {
+            font-size: 1.3rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .reset-btn {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .reset-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .progress-bar {
+            background: var(--light-bg);
+            height: 8px;
+            border-radius: 10px;
+            margin: 1rem 0 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--primary));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-box {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .example-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .text-block {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+            font-family: 'Source Serif Pro', serif;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="easy-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open logo-icon"></i>
+                <span>Easy English</span>
+            </div>
+            
+            <div class="unit-info">
+                <div class="unit-title">Unit 1 • Digital Culture</div>
+                <div class="lesson-title" id="current-section">Gaming & Esports</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер -->
+    <div class="easy-container">
+        <!-- Боковая панель -->
+        <aside class="easy-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Lesson Contents</div>
+                <ul class="lesson-nav">
+                    <li class="lesson-nav-item active" data-target="grammar-theory">
+                        <span class="lesson-number">1</span>
+                        Grammar Theory
+                    </li>
+                    <li class="lesson-nav-item" data-target="reading-section">
+                        <span class="lesson-number">2</span>
+                        Reading: E-sports
+                    </li>
+                    <li class="lesson-nav-item" data-target="comprehension">
+                        <span class="lesson-number">3</span>
+                        Comprehension
+                    </li>
+                    <li class="lesson-nav-item" data-target="speaking">
+                        <span class="lesson-number">4</span>
+                        Speaking
+                    </li>
+                    <li class="lesson-nav-item" data-target="writing">
+                        <span class="lesson-number">5</span>
+                        Writing
+                    </li>
+                    <li class="lesson-nav-item" data-target="grammar-exercises">
+                        <span class="lesson-number">6</span>
+                        Grammar Practice
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="easy-content">
+            <!-- Заголовок урока -->
+            <header class="lesson-header">
+                <div class="lesson-tag">Lesson 1.6</div>
+                <h1 class="lesson-main-title">Gaming & Esports</h1>
+                <p class="lesson-subtitle">Explore the world of e-sports, professional gaming, and digital competitions while mastering Present Tenses in English.</p>
+            </header>
+
+            <!-- Grammar Theory Section -->
+            <section class="lesson-section" id="grammar-theory">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h2 class="block-title">Grammar Focus: Present Tenses (Revision & Extension)</h2>
+                    </div>
+                    
+                    <div class="theory-box" style="background: var(--light-blue); padding: 1.5rem; border-radius: var(--radius); margin-bottom: 1.5rem;">
+                        <h3 style="color: var(--secondary); margin-bottom: 1rem;">📚 Present Tenses in English</h3>
+                        <p>In English, we use different present tenses to talk about the present time. Here is a quick revision:</p>
+                        
+                        <table class="vocab-table" style="margin-top: 1.5rem;">
+                            <tr>
+                                <th>Tense</th>
+                                <th>Usage</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Present Simple</strong></td>
+                                <td>Facts, habits, routines, permanent situations</td>
+                                <td><em>He plays video games every day.</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Present Continuous</strong></td>
+                                <td>Actions happening now, temporary situations, annoying habits (with 'always')</td>
+                                <td><em>He is playing a tournament right now.</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Present Perfect</strong></td>
+                                <td>Past actions with a result now, life experiences, unfinished actions (with 'for'/'since')</td>
+                                <td><em>He has won three tournaments this year.</em></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Present Perfect Continuous</strong></td>
+                                <td>Actions that started in the past and are still continuing, often with emphasis on duration</td>
+                                <td><em>He has been playing for five hours straight.</em></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- КАРТИНКА 1-->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="pictures/(ceglishan.comp.png" 
+                        alt="Social Media Addiction3" 
+                        style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
+                
+            </section>
+
+            <!-- Reading Section -->
+            <section class="lesson-section" id="reading-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h2 class="block-title">Reading: The Rise of Online Competitive Gaming</h2>
+                    </div>
+                    
+                    <div class="reading-block">
+                        <div class="reading-text">
+                            <p>Online competitive gaming, also known as e-sports, <strong>has become</strong> increasingly popular in recent years. With its growing fan base and lucrative prize pools, it's no wonder that many people <strong>are drawn</strong> to this form of entertainment. However, like any other activity, online competitive gaming <strong>has</strong> its pros and cons.</p>
+                            
+                            <p style="margin-top: 1rem;">One of the main advantages of online competitive gaming <strong>is</strong> its accessibility. Unlike traditional sports, which often require physical strength and coordination, e-sports can be enjoyed by virtually anyone with an internet connection and a computer or gaming console. This inclusivity <strong>has allowed</strong> people from all walks of life to participate and compete at a high level, regardless of their age or gender.</p>
+                            
+                            <p style="margin-top: 1rem;">Furthermore, online competitive gaming <strong>provides</strong> a platform for individuals to showcase their skills and talents. Many professional gamers <strong>have risen</strong> to fame through platforms such as Twitch and YouTube, where they <strong>stream</strong> their gameplay and <strong>interact</strong> with their fans. This not only <strong>allows</strong> them to earn a living doing what they love but also <strong>inspires</strong> others to pursue their passion for gaming.</p>
+                            
+                            <p style="margin-top: 1rem;">Another benefit of online competitive gaming <strong>is</strong> the sense of community it <strong>fosters</strong>. Players often <strong>join</strong> teams and <strong>form</strong> close-knit communities, where they can socialise, strategise, and support one another. This camaraderie <strong>can help</strong> combat feelings of loneliness and isolation, particularly for those who may have difficulty forming connections in the offline world.</p>
+                            
+                            <p style="margin-top: 1rem;">However, there <strong>are</strong> also some drawbacks to online competitive gaming. One of the most significant concerns <strong>is</strong> the potential for addiction. Like any other form of entertainment, online gaming can be highly addictive, and excessive play can negatively impact gamers' physical and mental well-being. It <strong>is</strong> crucial for players to set boundaries and prioritise their health and responsibilities outside of the game. Additionally, the competitive nature of online gaming can sometimes lead to toxic behavior. Trash-talking, violence, and cheating <strong>are</strong> unfortunately prevalent in certain gaming communities, which can create a hostile environment for players.</p>
+                            
+                            <p style="margin-top: 1rem;">In conclusion, online competitive gaming <strong>offers</strong> numerous benefits, such as accessibility, opportunities for self-expression, and a sense of belonging. However, it <strong>is</strong> essential for players to be mindful of their gaming habits and to prioritise their well-being. Developers and organisations also <strong>have</strong> a responsibility to foster a positive and inclusive environment for all players.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comprehension Section -->
+            <section class="lesson-section" id="comprehension">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h2 class="block-title">Reading Comprehension</h2>
+                    </div>
+                    
+                    <div class="exercise-block">
+                        <div class="exercise-title">
+                            <span>Answer the questions based on the text</span>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">1</div>
+                            <div class="question-text">What are some advantages of online competitive gaming in terms of accessibility?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">2</div>
+                            <div class="question-text">How do professional gamers showcase their skills and talents in the online gaming community?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">3</div>
+                            <div class="question-text">How does online competitive gaming help combat feelings of loneliness and isolation?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">4</div>
+                            <div class="question-text">What is one significant concern related to online competitive gaming mentioned in the text?</div>
+                        </div>
+                        
+                        <button class="answer-toggle" data-target="comprehension-answers">
+                            <i class="fas fa-chevron-down"></i> Show Answers
+                        </button>
+                        <div class="answer-content" id="comprehension-answers">
+                            <ol class="answer-list">
+                                <li><span class="correct-answer">Anyone with an internet connection can participate, regardless of age or gender.</span></li>
+                                <li><span class="correct-answer">They stream gameplay on platforms like Twitch and YouTube and interact with fans.</span></li>
+                                <li><span class="correct-answer">Players form communities where they socialise and support each other.</span></li>
+                                <li><span class="correct-answer">The potential for addiction.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Speaking Section -->
+            <section class="lesson-section" id="speaking">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h2 class="block-title">Speaking Questions</h2>
+                    </div>
+                    
+                    <div class="speaking-prompts">
+                        <div class="prompt-card">
+                            <span class="prompt-number">1</span>
+                            <strong>Do you watch e-sports? What games do you watch?</strong>
+                            <p style="color: var(--text-light); margin-top: 0.75rem;">Consider: League of Legends, Dota 2, CS:GO, Fortnite, etc.</p>
+                        </div>
+                        
+                        <div class="prompt-card">
+                            <span class="prompt-number">2</span>
+                            <strong>Can competitive gaming be called a sport? Why?</strong>
+                            <p style="color: var(--text-light); margin-top: 0.75rem;">Think about physical vs. mental skills, training, competition.</p>
+                        </div>
+                        
+                        <div class="prompt-card">
+                            <span class="prompt-number">3</span>
+                            <strong>Would you like to become a cyberathlete? Why?</strong>
+                            <p style="color: var(--text-light); margin-top: 0.75rem;">Consider pros: fame, money, passion; cons: pressure, health.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <div class="tip-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="tip-title">Speaking Tips</div>
+                        <div class="tip-content">
+                            • Use Present Simple for facts and habits: "I watch e-sports every weekend."<br>
+                            • Use Present Continuous for current trends: "E-sports are becoming more popular."<br>
+                            • Use Present Perfect for achievements: "I have played games since childhood."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="listening-block">
+                    <p><strong>Topic:</strong> Is gaming a sport?</p>
+                    <div class="audio-simulator">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/gfnyMyCZjqA?si=p7YcE5Nuu7Oj4CV1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Writing Section -->
+            <section class="lesson-section" id="writing">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-pen"></i>
+                        </div>
+                        <h2 class="block-title">Writing Task</h2>
+                    </div>
+                    
+                    <div class="writing-prompt">
+                        <div class="prompt-title">📝 Imagine you want to enroll in a cybersport tournament</div>
+                        <p>Write a small application, stating your experience, abilities, etc., and why you want to take part in it. (5–10 sentences)</p>
+                        <p style="margin-top: 0.75rem; font-style: italic; color: var(--text-light);">Include: your gaming experience, preferred games, achievements, team experience, and motivation.</p>
+                    </div>
+                    
+                    <textarea class="writing-textarea" placeholder="Write your application here..."></textarea>
+                    <div class="word-counter">
+                        <span class="word-count">0</span> words
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grammar Exercises Section -->
+            <section class="lesson-section" id="grammar-exercises">
+                <div class="block-header">
+                    <div class="block-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h2 class="block-title">Grammar Exercises: Present Tenses</h2>
+                </div>
+
+                <!-- Exercise 1: Choose the correct form (with input fields) -->
+                <div class="exercise-block" id="ex1">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Exercise 1: Choose the correct form
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Type the letter of the correct answer (a, b, or c) in the field.</p>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="ex1-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="ex1-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ex1-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="ex1-tasks">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('ex1')">
+                            <i class="fas fa-check-circle"></i> Check All
+                        </button>
+                        <button class="reset-btn" onclick="resetExercise('ex1')">
+                            <i class="fas fa-redo-alt"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 2: Present Perfect vs Present Perfect Continuous -->
+                <div class="exercise-block" id="ex2">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Exercise 2: Present Perfect vs Present Perfect Continuous
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Type the correct form of the verb in the field.</p>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="ex2-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="ex2-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ex2-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="ex2-tasks">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('ex2')">
+                            <i class="fas fa-check-circle"></i> Check All
+                        </button>
+                        <button class="reset-btn" onclick="resetExercise('ex2')">
+                            <i class="fas fa-redo-alt"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 3: Mixed Tenses -->
+                <div class="exercise-block" id="ex3">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Exercise 3: Mixed Tenses
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="ex3-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="ex3-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ex3-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="ex3-tasks">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('ex3')">
+                            <i class="fas fa-check-circle"></i> Check All
+                        </button>
+                        <button class="reset-btn" onclick="resetExercise('ex3')">
+                            <i class="fas fa-redo-alt"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 4: Present Simple or Present Continuous -->
+                <div class="exercise-block" id="ex4">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Exercise 4: Present Simple or Present Continuous
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="ex4-correct">0</span>/7</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="ex4-incorrect">0</span>/7</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ex4-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="ex4-tasks">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('ex4')">
+                            <i class="fas fa-check-circle"></i> Check All
+                        </button>
+                        <button class="reset-btn" onclick="resetExercise('ex4')">
+                            <i class="fas fa-redo-alt"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 5: B2 Level Mixed Tenses -->
+                <div class="exercise-block" id="ex5">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Exercise 5: Mixed Present Tenses
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Type the letter of the correct answer (a, b, or c) in the field.</p>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="ex5-correct">0</span>/6</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="ex5-incorrect">0</span>/6</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ex5-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="ex5-tasks">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('ex5')">
+                            <i class="fas fa-check-circle"></i> Check All
+                        </button>
+                        <button class="reset-btn" onclick="resetExercise('ex5')">
+                            <i class="fas fa-redo-alt"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 6: Error Correction -->
+                <div class="exercise-block" id="ex6">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Exercise 6: Error Correction
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="ex6-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="ex6-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ex6-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="ex6-tasks">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('ex6')">
+                            <i class="fas fa-check-circle"></i> Check All
+                        </button>
+                        <button class="reset-btn" onclick="resetExercise('ex6')">
+                            <i class="fas fa-redo-alt"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Exercise 7: Open Cloze -->
+                <div class="exercise-block" id="ex7">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Exercise 7: Open Cloze
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="ex7-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="ex7-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="ex7-progress" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="ex7-tasks">
+                        <!-- Filled by JavaScript -->
+                    </div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('ex7')">
+                            <i class="fas fa-check-circle"></i> Check All
+                        </button>
+                        <button class="reset-btn" onclick="resetExercise('ex7')">
+                            <i class="fas fa-redo-alt"></i> Reset
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Навигация -->
+            <div class="easy-footer">
+                <a class="nav-btn nav-btn-primary" href="lesson1.5.html">Previous Lesson</a>
+                
+                <div style="text-align: center;">
+                    <div style="font-weight: 600; color: var(--text);">Lesson Progress</div>
+                    <div style="color: var(--primary); font-weight: 700;" id="progress-text">Section 1 of 5</div>
+                </div>
+                
+                <a class="nav-btn nav-btn-primary" href="lesson1.7.html">Next Lesson</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // ===============================================
+        // CORRECT ANSWERS DATA
+        // ===============================================
+        const correctAnswers = {
+            // Exercise 1: Choose the correct form (letters)
+            ex1: ['a', 'b', 'a', 'c', 'a'],
+            
+            // Exercise 2: Present Perfect vs Present Perfect Continuous
+            ex2: ['have been waiting', 'has written', 'have been studying', 'have never been', 'has been working'],
+            
+            // Exercise 3: Mixed Tenses
+            ex3: ['watches', 'is cooking', 'have known', 'has already finished', 'have been playing'],
+            
+            // Exercise 4: Present Simple or Present Continuous
+            ex4: ['are having', 'have', 'hates', 'eats', 'wants', 'is taking', 'am not using', 'get up'],
+            
+            // Exercise 5: B2 Level Mixed Tenses (letters)
+            ex5: ['b', 'b', 'b', 'c', 'a', 'a'],
+            
+            // Exercise 6: Error Correction
+            ex6: ['plays', 'have known', 'won', 'wants', 'have been waiting'],
+            
+            // Exercise 7: Open Cloze
+            ex7: ['has been practicing', 'have been following', 'disappoints', 'are celebrating', 'has already beaten', 'have been trying']
+        };
+
+        // ===============================================
+        // EXERCISE DATA
+        // ===============================================
+        const exerciseData = {
+            ex1: [
+                '1. He likes to _____ computer games. (a) play  (b) is playing  (c) have played',
+                '2. They _____ football right now. (a) play  (b) are playing  (c) playing',
+                '3. The sun _____ every day in summer. (a) shines  (b) is shining  (c) shone',
+                '4. I _____ for the tournament right now. (a) prepare  (b) prepares  (c) am preparing',
+                '5. He _____ money by streaming. (a) earns  (b) earned  (c) is earning'
+            ],
+            ex2: [
+                '1. We _____ (wait) for you since 2 o\'clock.',
+                '2. She _____ (write) five letters this morning.',
+                '3. They _____ (study) English for three years.',
+                '4. I _____ (never/be) to Paris.',
+                '5. He _____ (work) on this project all week.'
+            ],
+            ex3: [
+                '1. Tom _____ (watch) TV every evening.',
+                '2. Mary _____ (cook) dinner at the moment.',
+                '3. I _____ (know) him for ten years.',
+                '4. She _____ (already/finish) her homework.',
+                '5. The children _____ (play) in the garden since morning.'
+            ],
+            ex4: [
+                '1. We _____ (have) lunch now. Can you call later, please?',
+                '2. They _____ (have) dinner at 6 pm.',
+                '3. Lisa _____ (hate) onions.',
+                '4. She never _____ (eat) them.',
+                '5. John _____ (want) to go to Paris for Christmas.',
+                '6. She can\'t answer the phone because she _____ (take) a shower.',
+                '7. You can take my laptop, I _____ (not use) it.',
+                '8. They _____ (get up) at 5 am.'
+            ],
+            ex5: [
+                '1. I _____ for my online match since 4 pm. (a) am preparing  (b) have been preparing  (c) prepare',
+                '2. She _____ three tournaments this year already. (a) wins  (b) has won  (c) is winning',
+                '3. Right now, he _____ live on Twitch. (a) streams  (b) is streaming  (c) has streamed',
+                '4. They _____ to win the championship for years. (a) try  (b) are trying  (c) have been trying',
+                '5. I _____ that game. Can you explain the rules? (a) don\'t understand  (b) am not understanding  (c) haven\'t understood',
+                '6. He usually _____ for 2 hours a day, but this week he _____ for 5 hours daily. (a) trains / is training  (b) is training / trains  (c) has trained / trains'
+            ],
+            ex6: [
+                '1. He is playing video games every evening. → He _____ video games every evening.',
+                '2. I am knowing her since 2015. → I _____ her since 2015.',
+                '3. They have been winning the match yesterday. → They _____ the match yesterday.',
+                '4. She is wanting to become a pro gamer. → She _____ to become a pro gamer.',
+                '5. We wait for the new game release since last month. → We _____ for the new game release since last month.'
+            ],
+            ex7: [
+                '1. He _____ (practice) for the tournament every day this month.',
+                '2. I _____ (follow) this streamer for a long time, and he never _____ (disappoint).',
+                '3. Look! They _____ (celebrate) their victory right now.',
+                '4. She _____ (already/beat) the previous record.',
+                '5. We _____ (try) to qualify for the finals all year.'
+            ]
+        };
+
+        // ===============================================
+        // INITIALIZATION
+        // ===============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load all exercises
+            for (let ex in exerciseData) {
+                loadExercise(ex, exerciseData[ex]);
+            }
+            
+            // Add input event listeners for real-time checking
+            setupInputListeners();
+            
+            // Navigation
+            setupNavigation();
+        });
+
+        function loadExercise(exId, questions) {
+            const container = document.getElementById(exId + '-tasks');
+            if (!container) return;
+            
+            let html = '';
+            questions.forEach((q, index) => {
+                html += `
+                    <div class="task-item" id="${exId}-task-${index}">
+                        <div class="sentence">${q}</div>
+                        <div class="input-group">
+                            <input type="text" class="answer-input" id="${exId}-input-${index}" placeholder="Your answer...">
+                            <span class="status-icon" id="${exId}-status-${index}">⚪</span>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function setupInputListeners() {
+            for (let ex in exerciseData) {
+                for (let i = 0; i < exerciseData[ex].length; i++) {
+                    const input = document.getElementById(`${ex}-input-${i}`);
+                    if (input) {
+                        input.addEventListener('input', function() {
+                            checkSingleAnswer(ex, i);
+                        });
+                    }
+                }
+            }
+        }
+
+        function normalizeAnswer(answer) {
+            return answer.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function checkSingleAnswer(exId, index) {
+            const input = document.getElementById(`${exId}-input-${index}`);
+            const status = document.getElementById(`${exId}-status-${index}`);
+            const taskItem = document.getElementById(`${exId}-task-${index}`);
+            
+            if (!input || !status || !taskItem) return;
+            
+            const userAnswer = normalizeAnswer(input.value);
+            const correctAnswer = normalizeAnswer(correctAnswers[exId][index]);
+            
+            if (userAnswer === '') {
+                status.innerHTML = '⚪';
+                taskItem.classList.remove('correct', 'incorrect');
+            } else if (userAnswer === correctAnswer) {
+                status.innerHTML = '✅';
+                taskItem.classList.add('correct');
+                taskItem.classList.remove('incorrect');
+            } else {
+                status.innerHTML = '❌';
+                taskItem.classList.add('incorrect');
+                taskItem.classList.remove('correct');
+            }
+            
+            updateExerciseStats(exId);
+        }
+
+        function checkExercise(exId) {
+            for (let i = 0; i < correctAnswers[exId].length; i++) {
+                checkSingleAnswer(exId, i);
+            }
+        }
+
+        function resetExercise(exId) {
+            for (let i = 0; i < correctAnswers[exId].length; i++) {
+                const input = document.getElementById(`${exId}-input-${i}`);
+                const status = document.getElementById(`${exId}-status-${i}`);
+                const taskItem = document.getElementById(`${exId}-task-${i}`);
+                
+                if (input) input.value = '';
+                if (status) status.innerHTML = '⚪';
+                if (taskItem) {
+                    taskItem.classList.remove('correct', 'incorrect');
+                }
+            }
+            updateExerciseStats(exId);
+        }
+
+        function updateExerciseStats(exId) {
+            let correct = 0;
+            let total = correctAnswers[exId].length;
+            
+            for (let i = 0; i < total; i++) {
+                const status = document.getElementById(`${exId}-status-${i}`);
+                if (status && status.innerHTML === '✅') {
+                    correct++;
+                }
+            }
+            
+            const correctSpan = document.getElementById(`${exId}-correct`);
+            const incorrectSpan = document.getElementById(`${exId}-incorrect`);
+            const progressFill = document.getElementById(`${exId}-progress`);
+            
+            if (correctSpan) correctSpan.textContent = correct;
+            if (incorrectSpan) incorrectSpan.textContent = total - correct;
+            if (progressFill) progressFill.style.width = (correct / total * 100) + '%';
+        }
+
+        function setupNavigation() {
+            const navItems = document.querySelectorAll('.lesson-nav-item');
+            const sections = document.querySelectorAll('.lesson-section');
+            const progressText = document.getElementById('progress-text');
+            const currentSectionTitle = document.getElementById('current-section');
+            
+            navItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const targetId = this.getAttribute('data-target');
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        progressText.textContent = `Section ${index + 1} of ${sections.length}`;
+                        currentSectionTitle.textContent = this.textContent.trim().replace(/^\d+/, '').trim();
+                    }
+                });
+            });
+            
+            // Answer toggle buttons
+            document.querySelectorAll('.answer-toggle').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    const target = document.getElementById(targetId);
+                    
+                    if (target) {
+                        target.classList.toggle('active');
+                        this.classList.toggle('active');
+                        
+                        const icon = this.querySelector('i');
+                        if (target.classList.contains('active')) {
+                            icon.classList.remove('fa-chevron-down');
+                            icon.classList.add('fa-chevron-up');
+                        } else {
+                            icon.classList.remove('fa-chevron-up');
+                            icon.classList.add('fa-chevron-down');
+                        }
+                    }
+                });
+            });
+            
+            // Word counter
+            const textarea = document.querySelector('.writing-textarea');
+            const wordCount = document.querySelector('.word-count');
+            
+            if (textarea && wordCount) {
+                textarea.addEventListener('input', function() {
+                    const words = this.value.trim().split(/\s+/).filter(w => w.length > 0);
+                    wordCount.textContent = words.length;
+                });
+            }
+        }
+    </script>
+</body>
+</html>

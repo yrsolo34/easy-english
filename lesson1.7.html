@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy English | Artificial Intelligence</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4688e2;
+            --primary-light: #5d9cff;
+            --secondary: #166088;
+            --accent: #FF6B6B;
+            --accent-light: #FF8E8E;
+            --success: #4CAF7D;
+            --success-light: #E8F5E9;
+            --danger: #f44336;
+            --danger-light: #FFEBEE;
+            --warning: #FFB74D;
+            --light-bg: #F9FAFC;
+            --light-blue: #EDF2F7;
+            --light-green: #F0FFF4;
+            --light-yellow: #FFF9E6;
+            --light-orange: #FFEFE6;
+            --light-purple: #F5F0FF;
+            --border: #E2E8F0;
+            --text: #2D3748;
+            --text-light: #718096;
+            --radius: 10px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .lesson-main-title {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .easy-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1.5rem 2rem;
+            color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .unit-info {
+            text-align: center;
+        }
+
+        .unit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .user-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .easy-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .easy-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 1px solid var(--border);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .lesson-nav {
+            list-style: none;
+        }
+
+        .lesson-nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            user-select: none;
+        }
+
+        .lesson-nav-item:hover {
+            background: var(--light-blue);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .lesson-nav-item.active {
+            background: var(--light-blue);
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .lesson-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .active .lesson-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .easy-content {
+            flex: 1;
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .lesson-section {
+            scroll-margin-top: 120px;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-section:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-header {
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-tag {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-main-title {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lesson-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .content-block {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .block-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .block-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .block-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .reading-block {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .reading-text {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .phrasal-card {
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            border: 2px solid var(--primary);
+        }
+
+        .exercise-block {
+            background: var(--light-bg);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .exercise-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+
+        .exercise-question {
+            margin-bottom: 1.25rem;
+            padding-left: 1.75rem;
+            position: relative;
+        }
+
+        .question-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        .answer-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .answer-toggle:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .answer-toggle.active {
+            background: var(--secondary);
+        }
+
+        .answer-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        .answer-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .answer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .answer-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .answer-list {
+            list-style-type: none;
+        }
+
+        .answer-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .answer-list li:last-child {
+            border-bottom: none;
+        }
+
+        .correct-answer {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .writing-prompt {
+            background: linear-gradient(to right, var(--light-yellow) 0%, rgba(255, 249, 230, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--warning);
+        }
+
+        .prompt-title {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .writing-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .writing-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+
+        .word-counter {
+            text-align: right;
+            margin-top: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .word-count {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .speaking-prompts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .prompt-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .prompt-number {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--light-blue);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tip-icon {
+            position: absolute;
+            top: -12px;
+            left: 1.5rem;
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .tip-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .tip-content {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 1.5rem 0;
+        }
+
+        .vocab-table th {
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vocab-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vocab-table tr:hover td {
+            background: var(--light-bg);
+        }
+
+        .vocab-word {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .easy-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .page-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--border);
+            background: white;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn-primary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        @media (max-width: 1200px) {
+            .easy-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .easy-sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 1.5rem;
+            }
+            
+            .easy-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .easy-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .user-progress {
+                margin-top: 0.5rem;
+            }
+            
+            .easy-content {
+                padding: 1.5rem;
+            }
+            
+            .lesson-main-title {
+                font-size: 2rem;
+            }
+            
+            .vocab-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .easy-footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .page-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* Interactive exercise styles - сохранены оригинальные */
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .task-item {
+            background: transparent;
+            padding: 0.75rem;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+            border-radius: 6px;
+        }
+
+        .task-item.correct {
+            background-color: var(--success-light);
+            border-left-color: var(--success);
+        }
+
+        .task-item.incorrect {
+            background-color: var(--danger-light);
+            border-left-color: var(--danger);
+        }
+
+        .sentence {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .answer-input {
+            flex: 1;
+            max-width: 400px;
+            padding: 0.6rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            background: white;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(70, 136, 226, 0.1);
+        }
+
+        .task-item.correct .answer-input {
+            border-color: var(--success);
+            background-color: var(--success-light);
+        }
+
+        .task-item.incorrect .answer-input {
+            border-color: var(--danger);
+            background-color: var(--danger-light);
+        }
+
+        .status-icon {
+            font-size: 1.3rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .reset-btn {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .reset-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .progress-bar {
+            background: var(--light-bg);
+            height: 8px;
+            border-radius: 10px;
+            margin: 1rem 0 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--primary));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-box {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Новые стили для multi-input задания (сохранена общая стилистика) */
+        .multi-part-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .multi-part-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--light-blue);
+            padding-bottom: 0.5rem;
+        }
+
+        .input-pair {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            background: var(--light-bg);
+            padding: 0.8rem;
+            border-radius: 8px;
+        }
+
+        .pair-number {
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 40px;
+            font-size: 0.9rem;
+        }
+
+        .answer-input-small {
+            width: 140px;
+            padding: 0.5rem 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            background: white;
+        }
+
+        .answer-input-small:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(70, 136, 226, 0.1);
+        }
+
+        .answer-input-small.correct {
+            border-color: var(--success);
+            background-color: var(--success-light);
+        }
+
+        .answer-input-small.incorrect {
+            border-color: var(--danger);
+            background-color: var(--danger-light);
+        }
+
+        .status-icon-small {
+            font-size: 1.1rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .sentence-part {
+            flex: 1;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <header class="easy-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open logo-icon"></i>
+                <span>Easy English</span>
+            </div>
+            <div class="unit-info">
+                <div class="unit-title">Unit 1 • Digital Life</div>
+                <div class="lesson-title" id="current-section">Artificial Intelligence</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="easy-container">
+        <aside class="easy-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Lesson Contents</div>
+                <ul class="lesson-nav">
+                    <li class="lesson-nav-item active" data-target="phrasal-verb">
+                        <span class="lesson-number">1</span> Phrasal Verb "Carry"
+                    </li>
+                    <li class="lesson-nav-item" data-target="listening">
+                        <span class="lesson-number">2</span> Listening: What is AI?
+                    </li>
+                    <li class="lesson-nav-item" data-target="vocabulary">
+                        <span class="lesson-number">3</span> Key Vocabulary
+                    </li>
+                    <li class="lesson-nav-item" data-target="speaking">
+                        <span class="lesson-number">4</span> Discussion
+                    </li>
+                    <li class="lesson-nav-item" data-target="writing">
+                        <span class="lesson-number">5</span> Writing
+                    </li>
+                    <li class="lesson-nav-item" data-target="grammar">
+                        <span class="lesson-number">6</span> Grammar: Past Tenses
+                    </li>
+                    <li class="lesson-nav-item" data-target="debate-section">
+                        <span class="lesson-number">6</span> Debate
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="easy-content">
+            <header class="lesson-header">
+                <div class="lesson-tag">Lesson 1.7</div>
+                <h1 class="lesson-main-title">Artificial Intelligence</h1>
+                <p class="lesson-subtitle">Explore the world of AI while mastering phrasal verbs and past tenses in English.</p>
+            </header>
+
+            <!-- PHRASAL VERB SECTION -->
+            <section class="lesson-section" id="phrasal-verb">
+                <div class="block-header">
+                    <div class="block-icon"><i class="fas fa-code-branch"></i></div>
+                    <h2 class="block-title">Phrasal Verb: TO CARRY</h2>
+                </div>
+                
+                <div class="phrasal-card">
+                    <table class="vocab-table">
+                        <tr><th>Phrasal Verb</th><th>Meaning</th><th>Example</th></tr>
+                        <tr><td class="vocab-word">carry on</td><td>continue</td><td>Please carry on with your work.</td></tr>
+                        <tr><td class="vocab-word">carry out</td><td>perform/execute</td><td>The scientists carried out an experiment.</td></tr>
+                        <tr><td class="vocab-word">carry off</td><td>win / handle successfully</td><td>She carried off the first prize.</td></tr>
+                        <tr><td class="vocab-word">carry over</td><td>postpone / transfer</td><td>The meeting was carried over to next week.</td></tr>
+                        <tr><td class="vocab-word">carry through</td><td>complete despite difficulties</td><td>His determination carried him through.</td></tr>
+                    </table>
+                </div>
+
+                <!-- Exercise P1 - Phrasal Verbs (particles) -->
+                <div class="exercise-block" id="exP1">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Ex.P1: Choose the correct particle
+                        <span>5 points</span>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="exP1-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="exP1-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="exP1-progress" style="width:0%"></div></div>
+                    
+                    <div class="task-list" id="exP1-tasks"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('exP1')"><i class="fas fa-check-circle"></i> Check All</button>
+                        <button class="reset-btn" onclick="resetExercise('exP1')"><i class="fas fa-redo-alt"></i> Reset</button>
+                    </div>
+                </div>
+
+                <!-- Exercise P2 - Phrasal Verbs (full) -->
+                <div class="exercise-block" id="exP2">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Ex.P2: Complete with the correct phrasal verb
+                        <span>5 points</span>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="exP2-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="exP2-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="exP2-progress" style="width:0%"></div></div>
+                    
+                    <div class="task-list" id="exP2-tasks"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('exP2')"><i class="fas fa-check-circle"></i> Check All</button>
+                        <button class="reset-btn" onclick="resetExercise('exP2')"><i class="fas fa-redo-alt"></i> Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LISTENING SECTION -->
+            <section class="lesson-section" id="listening">
+                <div class="block-header">
+                    <div class="block-icon"><i class="fas fa-headphones"></i></div>
+                    <h2 class="block-title">Listening: What is Artificial Intelligence?</h2>
+                </div>
+                
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/4801975299032417034" allowfullscreen></iframe>
+                </div>
+                
+                <div class="exercise-block">
+                    <div class="exercise-title">Questions about the video</div>
+                    
+                    <div class="exercise-question"><span class="question-number">1</span> What is Artificial Intelligence?</div>
+                    <div class="exercise-question"><span class="question-number">2</span> Where is AI being used right now?</div>
+                    <div class="exercise-question"><span class="question-number">3</span> What is an educated guess?</div>
+                    <div class="exercise-question"><span class="question-number">4</span> What does "Cutting edge" mean?</div>
+                    <div class="exercise-question"><span class="question-number">5</span> What was the name of the machine that beat Garry Kasparov?</div>
+                    <div class="exercise-question"><span class="question-number">6</span> What is an algorithm?</div>
+                    
+                    <button class="answer-toggle" data-target="listening-answers">
+                        <i class="fas fa-chevron-down"></i> Show Answers
+                    </button>
+                    <div class="answer-content" id="listening-answers">
+                        <ol class="answer-list">
+                            <li><span class="correct-answer">AI is the simulation of human intelligence in machines.</span></li>
+                            <li><span class="correct-answer">In healthcare, finance, transportation, entertainment, etc.</span></li>
+                            <li><span class="correct-answer">A guess based on knowledge and experience.</span></li>
+                            <li><span class="correct-answer">The most advanced, innovative stage of technology.</span></li>
+                            <li><span class="correct-answer">Deep Blue.</span></li>
+                            <li><span class="correct-answer">A set of step-by-step instructions for solving a problem.</span></li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VOCABULARY SECTION -->
+            <section class="lesson-section" id="vocabulary">
+                <div class="block-header">
+                    <div class="block-icon"><i class="fas fa-spell-check"></i></div>
+                    <h2 class="block-title">Key Vocabulary</h2>
+                </div>
+                
+                <table class="vocab-table">
+                    <tr><th>Word/Phrase</th><th>Meaning</th></tr>
+                    <tr><td class="vocab-word">Artificial Intelligence</td><td>intelligence demonstrated by machines</td></tr>
+                    <tr><td class="vocab-word">Cutting edge</td><td>the most advanced stage of development</td></tr>
+                    <tr><td class="vocab-word">Algorithm</td><td>a process or set of rules to be followed</td></tr>
+                    <tr><td class="vocab-word">Educated guess</td><td>a guess based on knowledge</td></tr>
+                    <tr><td class="vocab-word">Deep Blue</td><td>IBM computer that beat Kasparov</td></tr>
+                </table>
+                
+                <!-- Exercise V1 - Vocabulary matching -->
+                <div class="exercise-block" id="exV1">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Ex.V1: Match the word to its meaning
+                        <span>5 points</span>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="exV1-correct">0</span>/5</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="exV1-incorrect">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="exV1-progress" style="width:0%"></div></div>
+                    
+                    <div class="task-list" id="exV1-tasks"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('exV1')"><i class="fas fa-check-circle"></i> Check All</button>
+                        <button class="reset-btn" onclick="resetExercise('exV1')"><i class="fas fa-redo-alt"></i> Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SPEAKING SECTION -->
+            <section class="lesson-section" id="speaking">
+                <div class="block-header">
+                    <div class="block-icon"><i class="fas fa-comments"></i></div>
+                    <h2 class="block-title">Discussion Questions</h2>
+                </div>
+                
+                <div class="speaking-prompts">
+                    <div class="prompt-card">
+                        <span class="prompt-number">1</span> Do you use AI in your daily life? How?
+                    </div>
+                    <div class="prompt-card">
+                        <span class="prompt-number">2</span> Can AI be dangerous? Why/why not?
+                    </div>
+                    <div class="prompt-card">
+                        <span class="prompt-number">3</span> Will AI replace human jobs? Which ones?
+                    </div>
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="tip-title">Speaking Tips</div>
+                    <div class="tip-content">
+                        • Use Present Simple for facts: "AI helps people..."<br>
+                        • Use Modal verbs for opinions: "AI might be dangerous because..."<br>
+                        • Use Future forms for predictions: "AI will replace some jobs."
+                    </div>
+                </div>
+            </section>
+
+            <!-- WRITING SECTION -->
+            <section class="lesson-section" id="writing">
+                <div class="block-header">
+                    <div class="block-icon"><i class="fas fa-pen"></i></div>
+                    <h2 class="block-title">Writing Task</h2>
+                </div>
+                
+                <div class="writing-prompt">
+                    <div class="prompt-title">📝 Do you use AI in your life? Do you think it improves your capabilities?</div>
+                    <p>Write about how you think AI affects people. Give 2 examples of good and 2 examples of bad. (8–12 sentences)</p>
+                </div>
+                
+                <textarea class="writing-textarea" placeholder="Write your opinion here..."></textarea>
+                <div class="word-counter">Words: <span class="word-count">0</span></div>
+            </section>
+
+            <!-- GRAMMAR SECTION (Past Tenses) -->
+            <section class="lesson-section" id="grammar">
+                <div class="block-header">
+                    <div class="block-icon"><i class="fas fa-tasks"></i></div>
+                    <h2 class="block-title">Grammar Practice: Past Tenses</h2>
+                </div>
+                
+                <!-- Exercise G1 - Multiple choice -->
+                <div class="exercise-block" id="exG1">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Ex.G1: Choose the correct tense (a-d)
+                        <span>10 points</span>
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Type the letter of the correct answer (a, b, c, or d) in the field.</p>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="exG1-correct">0</span>/10</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="exG1-incorrect">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="exG1-progress" style="width:0%"></div></div>
+                    
+                    <div class="task-list" id="exG1-tasks"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkExercise('exG1')"><i class="fas fa-check-circle"></i> Check All</button>
+                        <button class="reset-btn" onclick="resetExercise('exG1')"><i class="fas fa-redo-alt"></i> Reset</button>
+                    </div>
+                </div>
+                
+                <!-- Exercise G2 - Write the correct form (multi-input) - СОХРАНЕНЫ ВСЕ СТИЛИ -->
+                <div class="exercise-block" id="exG2">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i> Ex.G2: Write the correct form
+                        <span>27 points</span>
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Fill in each blank with the correct verb form. Each blank has its own input field.</p>
+                    </div>
+                    
+                    <div class="stats">
+                        <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Correct: <span id="exG2-correct">0</span>/27</span>
+                        <span><i class="fas fa-times-circle" style="color: var(--danger);"></i> Incorrect: <span id="exG2-incorrect">0</span>/27</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" id="exG2-progress" style="width:0%"></div></div>
+                    
+                    <!-- Sentence 1 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 1</div>
+                        <div class="input-pair">
+                            <span class="pair-number">1.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-0" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-0">⚪</span>
+                            <span class="sentence-part">The workers _____ (be) on a strike for three weeks</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">1.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-1" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-1">⚪</span>
+                            <span class="sentence-part">when the agreement on pay _____ (be reached).</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 2 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 2</div>
+                        <div class="input-pair">
+                            <span class="pair-number">2.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-2" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-2">⚪</span>
+                            <span class="sentence-part">When she got the results, she realized that she _____ (feel) ill</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">2.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-3" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-3">⚪</span>
+                            <span class="sentence-part">since she _____ (be) on holiday.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 3 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 3</div>
+                        <div class="input-pair">
+                            <span class="pair-number">3.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-4" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-4">⚪</span>
+                            <span class="sentence-part">The door was unlocked. She _____ (wonder)</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">3.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-5" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-5">⚪</span>
+                            <span class="sentence-part">who _____ (leave) the door open.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 4 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 4</div>
+                        <div class="input-pair">
+                            <span class="pair-number">4.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-6" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-6">⚪</span>
+                            <span class="sentence-part">He _____ (play) football</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">4.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-7" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-7">⚪</span>
+                            <span class="sentence-part">when the ball _____ (hit) his head.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 5 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 5</div>
+                        <div class="input-pair">
+                            <span class="pair-number">5.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-8" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-8">⚪</span>
+                            <span class="sentence-part">He _____ (drive) to work for half an hour</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">5.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-9" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-9">⚪</span>
+                            <span class="sentence-part">when suddenly his car _____ (break) down.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 6 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 6</div>
+                        <div class="input-pair">
+                            <span class="pair-number">6.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-10" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-10">⚪</span>
+                            <span class="sentence-part">When he arrived he _____ (discover)</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">6.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-11" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-11">⚪</span>
+                            <span class="sentence-part">that he _____ (leave) all the papers at home.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 7 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 7</div>
+                        <div class="input-pair">
+                            <span class="pair-number">7.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-12" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-12">⚪</span>
+                            <span class="sentence-part">Susan _____ (type) some letters</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">7.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-13" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-13">⚪</span>
+                            <span class="sentence-part">when the boss _____ (ask) her into his office.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 8 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 8</div>
+                        <div class="input-pair">
+                            <span class="pair-number">8</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-14" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-14">⚪</span>
+                            <span class="sentence-part">She looked tired. She _____ (type) letters all morning.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 9 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 9</div>
+                        <div class="input-pair">
+                            <span class="pair-number">9.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-15" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-15">⚪</span>
+                            <span class="sentence-part">Yesterday afternoon it _____ (still rain)</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">9.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-16" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-16">⚪</span>
+                            <span class="sentence-part">when I _____ (get) home.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 10 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 10</div>
+                        <div class="input-pair">
+                            <span class="pair-number">10.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-17" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-17">⚪</span>
+                            <span class="sentence-part">He _____ (clean) the car when the phone rang,</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">10.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-18" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-18">⚪</span>
+                            <span class="sentence-part">so he _____ (not answer) it.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 11 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 11</div>
+                        <div class="input-pair">
+                            <span class="pair-number">11.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-19" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-19">⚪</span>
+                            <span class="sentence-part">When I _____ (be) little,</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">11.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-20" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-20">⚪</span>
+                            <span class="sentence-part">my mother _____ (use) to feed me.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 12 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 12</div>
+                        <div class="input-pair">
+                            <span class="pair-number">12</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-21" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-21">⚪</span>
+                            <span class="sentence-part">Jane's clothes were wet. She _____ (wash) her dog.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 13 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 13</div>
+                        <div class="input-pair">
+                            <span class="pair-number">13.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-22" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-22">⚪</span>
+                            <span class="sentence-part">Jerry _____ (be) nervous,</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">13.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-23" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-23">⚪</span>
+                            <span class="sentence-part">for he _____ (never fly) in an aeroplane before.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 14 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 14</div>
+                        <div class="input-pair">
+                            <span class="pair-number">14</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-24" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-24">⚪</span>
+                            <span class="sentence-part">I _____ (never like) going to the cinema on my own when I was a teenager.</span>
+                        </div>
+                    </div>
+
+                    <!-- Sentence 15 -->
+                    <div class="multi-part-item">
+                        <div class="multi-part-title">Sentence 15</div>
+                        <div class="input-pair">
+                            <span class="pair-number">15.1</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-25" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-25">⚪</span>
+                            <span class="sentence-part">Kate _____ (dance),</span>
+                        </div>
+                        <div class="input-pair">
+                            <span class="pair-number">15.2</span>
+                            <input type="text" class="answer-input-small" id="exG2-input-26" placeholder="verb">
+                            <span class="status-icon-small" id="exG2-status-26">⚪</span>
+                            <span class="sentence-part">but when she saw a newcomer she _____ (stop).</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="check-btn" onclick="checkMultiExercise()"><i class="fas fa-check-circle"></i> Check All</button>
+                        <button class="reset-btn" onclick="resetMultiExercise()"><i class="fas fa-redo-alt"></i> Reset</button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- ДЕБАТЫ-->
+            <section class="lesson-section" id="debate-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h2 class="block-title">DEBATE</h2>
+                    </div>
+                    <div class="writing-prompt">
+                        <div class="prompt-title">Do you use AI in your life?</div>
+                        <p>Conduct a debate among your classmates. The question is: Should AI be developed in the direction of replacing large parts of human lifes(work, art, education)? One side should provide arguments for, the other against.</p>
+                    </div>
+                    <!-- КАРТИНКА 4 (debate)-->
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <img src="pictures/20652 No title_V009_A.png.webp" 
+                            alt="Social Media Addiction3" 
+                            style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Навигация -->
+            <div class="easy-footer">
+                <a class="nav-btn nav-btn-primary" href="lesson1.6.html">Previous Lesson</a>
+                
+                <div style="text-align: center;">
+                    <div style="font-weight: 600; color: var(--text);">Lesson Progress</div>
+                    <div style="color: var(--primary); font-weight: 700;" id="progress-text">Section 1 of 5</div>
+                </div>
+                
+                <a class="nav-btn nav-btn-primary" href="lesson.1.6.html">Modules</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // ===============================================
+        // CORRECT ANSWERS DATA
+        // ===============================================
+        const CORRECT_ANSWERS = {
+            // Exercise P1 - particles
+            exP1: ['on', 'out', 'off', 'over', 'through'],
+            
+            // Exercise P2 - full phrasal verbs
+            exP2: ['carry on', 'carry out', 'carry off', 'carry over', 'carry through'],
+            
+            // Exercise V1 - vocabulary (a/b answers)
+            exV1: ['b', 'a', 'a', 'b', 'a'],
+            
+            // Exercise G1 - multiple choice (letters)
+            exG1: ['d', 'd', 'b', 'a', 'c', 'c', 'c', 'b', 'a', 'b'],
+            
+            // Exercise G2 - verb forms (27 items)
+            exG2: [
+                'had been',          // 0: The workers had been
+                'was reached',        // 1: was reached
+                'had been feeling',   // 2: had been feeling
+                'was',                // 3: was
+                'wondered',           // 4: wondered
+                'had left',           // 5: had left
+                'was playing',        // 6: was playing
+                'hit',                // 7: hit
+                'had been driving',   // 8: had been driving
+                'broke',              // 9: broke
+                'discovered',         // 10: discovered
+                'had left',           // 11: had left
+                'was typing',         // 12: was typing
+                'asked',              // 13: asked
+                'had been typing',    // 14: had been typing
+                'was still raining',  // 15: was still raining
+                'got',                // 16: got
+                'was cleaning',       // 17: was cleaning
+                'did not answer',     // 18: did not answer
+                'was',                // 19: was
+                'used',               // 20: used
+                'had been washing',   // 21: had been washing
+                'was',                // 22: was
+                'had never flown',    // 23: had never flown
+                'never liked',        // 24: never liked
+                'was dancing',        // 25: was dancing
+                'stopped'             // 26: stopped
+            ]
+        };
+
+        // ===============================================
+        // EXERCISE DATA
+        // ===============================================
+        const exercises = {
+            exP1: [
+                "1. Please carry ___ with your work; don't stop. (on/out/off/over/through)",
+                "2. The scientists will carry ___ an important experiment. (on/out/off/over/through)",
+                "3. She managed to carry ___ the first prize. (on/out/off/over/through)",
+                "4. The meeting was carried ___ to next Monday. (on/out/off/over/through)",
+                "5. His courage carried him ___ the difficult times. (on/out/off/over/through)"
+            ],
+            exP2: [
+                "1. Please ________ with your work; don't stop.",
+                "2. The scientists will ________ an important experiment.",
+                "3. She managed to ________ the first prize.",
+                "4. The meeting was ________ to next Monday.",
+                "5. His courage ________ him through the difficult times."
+            ],
+            exV1: [
+                "1. Artificial Intelligence: a) human brain  b) machine intelligence → (a/b)",
+                "2. Cutting edge: a) most advanced  b) old-fashioned → (a/b)",
+                "3. Algorithm: a) step-by-step procedure  b) random guess → (a/b)",
+                "4. Deep Blue: a) an ocean  b) a chess computer → (a/b)",
+                "5. Educated guess: a) random guess  b) guess based on knowledge → (a/b)"
+            ],
+            exG1: [
+                "1. I ___ over the phone when they brought the letter. (a. talked / b. had talked / c. had been talking / d. was talking)",
+                "2. They ___ in the room when the taxi arrived. (a. sat / b. had sat / c. had been sitting / d. were sitting)",
+                "3. He forgot everything he ___ at school. (a. learnt / b. had learnt / c. had been learning / d. was learning)",
+                "4. I visited Brazil. I ___ at a nice hotel for a fortnight. (a. stayed / b. had stayed / c. had been staying / d. was staying)",
+                "5. I ___ at the hotel for a fortnight when I received your letter. (a. stayed / b. had stayed / c. had been staying / d. was staying)",
+                "6. The musician ___ the piano for an hour when we came in. (a. played / b. had played / c. had been playing / d. was playing)",
+                "7. We ___ along a road for two hours when we saw a house. (a. walked / b. had walked / c. had been walking / d. were walking)",
+                "8. I hardly ___ speaking when the phone rang again. (a. finished / b. had hardly finished / c. had been finishing / d. was finishing)",
+                "9. First I ___ the phone, then I read your letter. (a. answered / b. had answered / c. had been answering / d. was answering)",
+                "10. I began writing instead of going to the seaside, as I ___ before. (a. planned / b. had planned / c. had been planning / d. was planning)"
+            ]
+        };
+
+        // ===============================================
+        // UTILITY FUNCTIONS
+        // ===============================================
+        function normalize(str) {
+            return str.toLowerCase().trim().replace(/\s+/g, ' ');
+        }
+
+        function loadExercise(exId) {
+            const container = document.getElementById(exId + '-tasks');
+            if (!container || !exercises[exId]) return;
+            
+            container.innerHTML = '';
+            exercises[exId].forEach((q, i) => {
+                const taskDiv = document.createElement('div');
+                taskDiv.className = 'task-item';
+                taskDiv.id = `${exId}-task-${i}`;
+                
+                const sentenceDiv = document.createElement('div');
+                sentenceDiv.className = 'sentence';
+                sentenceDiv.innerHTML = q;
+                
+                const inputGroup = document.createElement('div');
+                inputGroup.className = 'input-group';
+                
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'answer-input';
+                input.id = `${exId}-input-${i}`;
+                input.placeholder = 'Your answer...';
+                
+                const statusSpan = document.createElement('span');
+                statusSpan.className = 'status-icon';
+                statusSpan.id = `${exId}-status-${i}`;
+                statusSpan.innerHTML = '⚪';
+                
+                inputGroup.appendChild(input);
+                inputGroup.appendChild(statusSpan);
+                taskDiv.appendChild(sentenceDiv);
+                taskDiv.appendChild(inputGroup);
+                container.appendChild(taskDiv);
+                
+                // Add input listener
+                input.addEventListener('input', () => checkOne(exId, i));
+            });
+        }
+
+        function checkOne(exId, index) {
+            const input = document.getElementById(`${exId}-input-${index}`);
+            const status = document.getElementById(`${exId}-status-${index}`);
+            const task = document.getElementById(`${exId}-task-${index}`);
+            
+            if (!input || !status || !task) return;
+            
+            const userAnswer = normalize(input.value);
+            const correctAnswer = normalize(CORRECT_ANSWERS[exId][index]);
+            
+            if (userAnswer === '') {
+                status.innerHTML = '⚪';
+                task.classList.remove('correct', 'incorrect');
+            } else if (userAnswer === correctAnswer) {
+                status.innerHTML = '✅';
+                task.classList.add('correct');
+                task.classList.remove('incorrect');
+            } else {
+                status.innerHTML = '❌';
+                task.classList.add('incorrect');
+                task.classList.remove('correct');
+            }
+            
+            updateStats(exId);
+        }
+
+        function updateStats(exId) {
+            let correct = 0;
+            const total = CORRECT_ANSWERS[exId].length;
+            
+            for (let i = 0; i < total; i++) {
+                const status = document.getElementById(`${exId}-status-${i}`);
+                if (status && status.innerHTML === '✅') correct++;
+            }
+            
+            const correctSpan = document.getElementById(`${exId}-correct`);
+            const incorrectSpan = document.getElementById(`${exId}-incorrect`);
+            const progress = document.getElementById(`${exId}-progress`);
+            
+            if (correctSpan) correctSpan.textContent = correct;
+            if (incorrectSpan) incorrectSpan.textContent = total - correct;
+            if (progress) progress.style.width = (correct / total * 100) + '%';
+        }
+
+        function checkExercise(exId) {
+            for (let i = 0; i < CORRECT_ANSWERS[exId].length; i++) {
+                checkOne(exId, i);
+            }
+        }
+
+        function resetExercise(exId) {
+            for (let i = 0; i < CORRECT_ANSWERS[exId].length; i++) {
+                const input = document.getElementById(`${exId}-input-${i}`);
+                const status = document.getElementById(`${exId}-status-${i}`);
+                const task = document.getElementById(`${exId}-task-${i}`);
+                
+                if (input) input.value = '';
+                if (status) status.innerHTML = '⚪';
+                if (task) task.classList.remove('correct', 'incorrect');
+            }
+            updateStats(exId);
+        }
+
+        // Special functions for multi-input exercise (exG2)
+        function checkMultiExercise() {
+            const total = CORRECT_ANSWERS.exG2.length;
+            let correct = 0;
+            
+            for (let i = 0; i < total; i++) {
+                const input = document.getElementById(`exG2-input-${i}`);
+                const status = document.getElementById(`exG2-status-${i}`);
+                
+                if (!input || !status) continue;
+                
+                const userAnswer = normalize(input.value);
+                const correctAnswer = normalize(CORRECT_ANSWERS.exG2[i]);
+                
+                if (userAnswer === '') {
+                    status.innerHTML = '⚪';
+                    input.classList.remove('correct', 'incorrect');
+                } else if (userAnswer === correctAnswer) {
+                    status.innerHTML = '✅';
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    correct++;
+                } else {
+                    status.innerHTML = '❌';
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                }
+            }
+            
+            document.getElementById('exG2-correct').textContent = correct;
+            document.getElementById('exG2-incorrect').textContent = total - correct;
+            document.getElementById('exG2-progress').style.width = (correct / total * 100) + '%';
+        }
+
+        function resetMultiExercise() {
+            const total = CORRECT_ANSWERS.exG2.length;
+            
+            for (let i = 0; i < total; i++) {
+                const input = document.getElementById(`exG2-input-${i}`);
+                const status = document.getElementById(`exG2-status-${i}`);
+                
+                if (input) {
+                    input.value = '';
+                    input.classList.remove('correct', 'incorrect');
+                }
+                if (status) status.innerHTML = '⚪';
+            }
+            
+            document.getElementById('exG2-correct').textContent = '0';
+            document.getElementById('exG2-incorrect').textContent = total.toString();
+            document.getElementById('exG2-progress').style.width = '0%';
+        }
+
+        // ===============================================
+        // INITIALIZATION
+        // ===============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load all simple exercises
+            for (let ex in exercises) {
+                loadExercise(ex);
+            }
+            
+            // Add listeners for multi-input exercise
+            const totalG2 = CORRECT_ANSWERS.exG2.length;
+            for (let i = 0; i < totalG2; i++) {
+                const input = document.getElementById(`exG2-input-${i}`);
+                if (input) {
+                    input.addEventListener('input', checkMultiExercise);
+                }
+            }
+            
+            // Toggle answers for listening
+            document.querySelectorAll('.answer-toggle').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const target = document.getElementById(this.dataset.target);
+                    target.classList.toggle('active');
+                    this.classList.toggle('active');
+                    
+                    const icon = this.querySelector('i');
+                    if (target.classList.contains('active')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+            
+            // Word counter
+            const textarea = document.querySelector('.writing-textarea');
+            const wordCount = document.querySelector('.word-count');
+            if (textarea && wordCount) {
+                textarea.addEventListener('input', function() {
+                    const words = this.value.trim().split(/\s+/).filter(w => w.length > 0);
+                    wordCount.textContent = words.length;
+                });
+            }
+            
+            // Navigation
+            const navItems = document.querySelectorAll('.lesson-nav-item');
+            const sections = document.querySelectorAll('.lesson-section');
+            const progressText = document.getElementById('progress-text');
+            const currentTitle = document.getElementById('current-section');
+            
+            navItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    navItems.forEach(n => n.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const targetId = this.dataset.target;
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        progressText.textContent = `Section ${index + 1} of ${sections.length}`;
+                        currentTitle.textContent = this.textContent.replace(/^\d+/, '').trim();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

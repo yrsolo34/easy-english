@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy English | Lesson 1.1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4688e2;
+            --primary-light: #5d9cff;
+            --secondary: #166088;
+            --accent: #FF6B6B;
+            --accent-light: #FF8E8E;
+            --success: #4CAF7D;
+            --warning: #FFB74D;
+            --light-bg: #F9FAFC;
+            --light-blue: #EDF2F7;
+            --light-green: #F0FFF4;
+            --light-yellow: #FFF9E6;
+            --light-orange: #FFEFE6;
+            --light-purple: #F5F0FF;
+            --border: #E2E8F0;
+            --text: #2D3748;
+            --text-light: #718096;
+            --radius: 10px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .lesson-main-title {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        /* Навигация */
+        .easy-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1.5rem 2rem;
+            color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .unit-info {
+            text-align: center;
+        }
+
+        .unit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .user-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Основной контейнер */
+        .easy-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        /* Боковая панель */
+        .easy-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .lesson-nav {
+            list-style: none;
+        }
+
+        .lesson-nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            user-select: none;
+        }
+
+        .lesson-nav-item:hover {
+            background: var(--light-blue);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .lesson-nav-item.active {
+            background: var(--light-blue);
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .lesson-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .active .lesson-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Основной контент */
+        .easy-content {
+            flex: 1;
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .lesson-section {
+            scroll-margin-top: 120px;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-section:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-header {
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-tag {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-main-title {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .lesson-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        /* Блоки контента */
+        .content-block {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .block-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .block-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .block-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        /* Vocabulary Table */
+        .vocab-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 1.5rem 0;
+        }
+
+        .vocab-table th {
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vocab-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vocab-table tr:hover td {
+            background: var(--light-bg);
+        }
+
+        .vocab-word {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .vocab-pronunciation {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .vocab-meaning {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-example {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--light-bg);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--primary-light);
+        }
+
+        /* Reading Block */
+        .reading-block {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .reading-text {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-term {
+            background-color: rgba(255, 107, 107, 0.1);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Exercises */
+        .exercise-block {
+            background: var(--light-bg);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .exercise-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+
+        .exercise-question {
+            margin-bottom: 1.25rem;
+            padding-left: 1.75rem;
+            position: relative;
+        }
+
+        .question-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        .question-text {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .answer-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .answer-toggle:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .answer-toggle.active {
+            background: var(--secondary);
+        }
+
+        .answer-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        .answer-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .answer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .answer-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .answer-list {
+            list-style-type: none;
+        }
+
+        .answer-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .answer-list li:last-child {
+            border-bottom: none;
+        }
+
+        .correct-answer {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .answer-explanation {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        /* Writing Block */
+        .writing-block {
+            margin: 2rem 0;
+        }
+
+        .writing-prompt {
+            background: linear-gradient(to right, var(--light-yellow) 0%, rgba(255, 249, 230, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--warning);
+        }
+
+        .prompt-title {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .writing-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .writing-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+
+        .word-counter {
+            text-align: right;
+            margin-top: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .word-count {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Listening Block */
+        .listening-block {
+            background: linear-gradient(to right, var(--light-purple) 0%, rgba(245, 240, 255, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border-left: 4px solid #9B5DE5;
+            margin: 1.5rem 0;
+        }
+
+        .audio-simulator {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+            padding: 1.25rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .audio-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #9B5DE5 0%, #C77DFF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .audio-info {
+            flex: 1;
+        }
+
+        .audio-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .audio-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Project Block */
+        .project-block {
+            background: linear-gradient(to right, var(--light-green) 0%, rgba(240, 255, 244, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--success);
+            margin: 1.5rem 0;
+        }
+
+        .project-steps {
+            list-style-type: none;
+            margin-top: 1.25rem;
+        }
+
+        .project-step {
+            padding: 1rem 0 1rem 2.5rem;
+            position: relative;
+            counter-increment: step-counter;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .project-step:last-child {
+            border-bottom: none;
+        }
+
+        .project-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            width: 28px;
+            height: 28px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* Tips & Notes */
+        .tip-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--light-blue);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tip-icon {
+            position: absolute;
+            top: -12px;
+            left: 1.5rem;
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .tip-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .tip-content {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Футер */
+        .easy-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .page-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--border);
+            background: white;
+            color: var(--text);
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn-primary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            .easy-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .easy-sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 1.5rem;
+            }
+            
+            .easy-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .easy-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .user-progress {
+                margin-top: 0.5rem;
+            }
+            
+            .easy-content {
+                padding: 1.5rem;
+            }
+            
+            .lesson-main-title {
+                font-size: 2rem;
+            }
+            
+            .vocab-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .easy-footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .page-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .block-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .block-icon {
+                margin-right: 0;
+            }
+            
+            .audio-simulator {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="easy-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open logo-icon"></i>
+                <span>Easy English</span>
+            </div>
+            
+            <div class="unit-info">
+                <div class="unit-title">Unit 1 • Digital Life</div>
+                <div class="lesson-title" id="current-section">The Internet Revolution</div>
+            </div>
+            
+            <!--<div class="user-progress">
+                <div class="progress-circle" id="progress-percent">65%</div>
+                <div style="font-size: 0.9rem;">
+                    <div>Progress</div>
+                    <div style="font-weight: 600;" id="section-counter">Section 1 of 6</div>
+                </div>-->
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер -->
+    <div class="easy-container">
+        <!-- Боковая панель -->
+        <aside class="easy-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Unit Contents</div>
+                <ul class="lesson-nav">
+                    <li class="lesson-nav-item active" data-target="vocabulary-section">
+                        <span class="lesson-number">1</span>
+                        Vocabulary: Tech & Social Media
+                    </li>
+                    <li class="lesson-nav-item" data-target="reading-section">
+                        <span class="lesson-number">2</span>
+                        Reading: The Internet Revolution
+                    </li>
+                    <li class="lesson-nav-item" data-target="listening-section">
+                        <span class="lesson-number">3</span>
+                        Listening: Work-Life Balance
+                    </li>
+                    <li class="lesson-nav-item" data-target="speaking-section">
+                        <span class="lesson-number">4</span>
+                        Speaking: Digital Discussion
+                    </li>
+                    <li class="lesson-nav-item" data-target="writing-section">
+                        <span class="lesson-number">5</span>
+                        Writing: Opinion Essay
+                    </li>
+                    <li class="lesson-nav-item" data-target="project-section">
+                        <span class="lesson-number">6</span>
+                        Project: Digital Diary
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <div class="sidebar-title">Study Tools</div>
+                <div class="tip-box" style="margin: 0; padding: 1rem; border: none; background: var(--light-bg);">
+                    <div class="tip-title" style="font-size: 0.9rem;">Navigation Tip</div>
+                    <div class="tip-content" style="font-size: 0.85rem;">
+                        Click on any section in Unit Contents to jump directly to it. Current section will be highlighted as you scroll.
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="easy-content">
+            <!-- Заголовок урока -->
+            <header class="lesson-header">
+                <div class="lesson-tag">Lesson 1.1</div>
+                <h1 class="lesson-main-title">The Internet Revolution</h1>
+                <p class="lesson-subtitle">Master essential vocabulary, reading, listening, and writing skills to discuss modern technology, social media trends, and digital lifestyles.</p>
+            </header>
+
+            <!-- Vocabulary Section -->
+            <section class="lesson-section" id="vocabulary-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <h2 class="block-title">Vocabulary: Tech & Social Media</h2>
+                    </div>
+                    
+                    <p style="margin-bottom: 1.5rem; color: var(--text);">The following words and phrases are essential for discussing technology and modern lifestyle. Study their meanings, pronunciation, and example sentences.</p>
+                    
+                    <table class="vocab-table">
+                        <thead>
+                            <tr>
+                                <th>Vocabulary</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="vocab-word">Digital native</div>
+                                    <div class="vocab-pronunciation">/ˈdɪdʒɪtl ˈneɪtɪv/</div>
+                                </td>
+                                <td>
+                                    <div class="vocab-meaning">A person born during the age of digital technology who is familiar with computers and the internet from an early age.</div>
+                                    <div class="vocab-example">"My niece is a true digital native—she can use a tablet before she could read."</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="vocab-word">To go viral</div>
+                                    <div class="vocab-pronunciation">/tə ɡoʊ ˈvaɪrəl/</div>
+                                </td>
+                                <td>
+                                    <div class="vocab-meaning">To spread rapidly and widely on the internet through social media and other online platforms.</div>
+                                    <div class="vocab-example">"The funny cat video went viral and got millions of views in just 48 hours."</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="vocab-word">Work-life balance</div>
+                                    <div class="vocab-pronunciation">/wɜːrk laɪf ˈbæləns/</div>
+                                </td>
+                                <td>
+                                    <div class="vocab-meaning">The balance between professional responsibilities and personal life activities.</div>
+                                    <div class="vocab-example">"Many companies now promote better work-life balance by offering flexible working hours."</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="vocab-word">Screen time</div>
+                                    <div class="vocab-pronunciation">/skriːn taɪm/</div>
+                                </td>
+                                <td>
+                                    <div class="vocab-meaning">The amount of time spent using a device with a screen such as a smartphone, computer, or television.</div>
+                                    <div class="vocab-example">"Doctors recommend limiting screen time before bed to improve sleep quality."</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="vocab-word">To be on the go</div>
+                                    <div class="vocab-pronunciation">/tə bi ɒn ðə ɡoʊ/</div>
+                                </td>
+                                <td>
+                                    <div class="vocab-meaning">To be constantly busy and active, moving from one activity or place to another.</div>
+                                    <div class="vocab-example">"Modern lifestyle keeps us constantly on the go with little time for relaxation."</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="exercise-block">
+                        <div class="exercise-title">
+                            <span>Vocabulary Practice</span>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">1</div>
+                            <div class="question-text">What is the difference between a "digital native" and a "digital immigrant"?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">2</div>
+                            <div class="question-text">Give an example of something that might "go viral" on social media.</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">!</div>
+                            <div class="question-text">Create elaborate sentences using new words.</div>
+                        </div>
+                        
+                        <button class="answer-toggle" data-target="vocab-answers">
+                            <i class="fas fa-chevron-down"></i>
+                            Show Answers
+                        </button>
+                        
+                        <div class="answer-content" id="vocab-answers">
+                            <ol class="answer-list">
+                                <li>
+                                    <span class="correct-answer">A "digital native" is someone born into the digital age who grew up with technology, while a "digital immigrant" is someone who adopted technology later in life.</span>
+                                    <div class="answer-explanation">Digital natives are typically more comfortable with technology as it has always been part of their lives.</div>
+                                </li>
+                                <li>
+                                    <span class="correct-answer">Examples include: funny videos, inspirational stories, breaking news, controversial opinions, or creative content that captures public attention.</span>
+                                    <div class="answer-explanation">Viral content usually evokes strong emotions (humor, surprise, anger) or provides value that people want to share.</div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reading Section -->
+            <section class="lesson-section" id="reading-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h2 class="block-title">Reading: The Internet Revolution</h2>
+                    </div>
+                    
+                    <div class="reading-block">
+                        <p>
+                            The Internet has already entered our ordinary life. Everybody knows that the Internet is a <span class="highlight-term">global computer network</span>, which embraces hundred of millions of users all over the world and helps us to communicate with each other.
+                        </p>
+                        <p style="margin-top: 1.5rem;">
+                            The history of Internet began in the United States in 1969. It was a military experiment, designed to help survive during a nuclear war, when everything around might be polluted by radiation and it would be dangerous to get out for any living being to get some information to anywhere. Information sent over the Internet takes the shortest and safest path available from one computer to another. Because of this, any two computers on the net will be able to stay in touch with each other as long as there is a single route between them. This technology was called <span class="highlight-term">packet switching</span>. Invention of <span class="highlight-term">modems</span>, special devices allowing your computer to send the information through the telephone line, has opened doors to the Internet for millions of people.
+                        </p>
+                        <p style="margin-top: 1.5rem">
+                            Most of the Internet host computers are in the United States of America. It is clear that the accurate number of users can be counted fairly approximately, nobody knows exactly how many people use the Internet today, because there are billions of users and their number is growing.
+                        </p>
+                        <p style="margin-top: 1.5rem">
+                            In many countries, the Internet could provide businessmen with a reliable, alternative to the expensive and unreliable <span class="highlight-term">telecommunications systems</span> its own system of communications. Commercial users can communicate cheaply over the Internet with the rest of the world. When they send e-mail messages, they only have to pay for phone calls to their local service providers, not for international calls around the world, when you pay a good deal of money.
+                        </p>
+                        <p style="margin-top: 1.5rem">
+                            But saving money is only the first step and not the last one. There is a commercial use of this <span class="highlight-term">network</span> and it is drastically increasing. Now you can work through the internet, chat with friends and play through the net.
+                        </p>
+                        <p style="margin-top: 1.5rem">
+                            However, there are some problems. The most important problem is security. When you send an e-mail, your message can travel through many different networks and computers. The data is constantly being directed towards its destination by special computers called routers. Because of this, it is possible to get into any of the computers along the route, intercept and even change the data being sent over the Internet. But there are many encoding programs available.
+                        </p>
+                        <p style="margin-top: 1.5rem">
+                            Another big and serious problem of the net is control. Yes, there is no effective control in the Internet, because a huge amount of information circulating through the net. It is like a tremendous library and market together. That is why you should be careful, while searching the net. Things like <span class="highlight-term">viruses</span> or other <span class="highlight-term">digital malware</span> at large in the net. Because of this you should learn some basic rules for using the Internet. Such us: Don’t click unknown links, don’t share your personal information online and don’t talk to people you don’t know.
+
+                        </p>
+                    </div>
+                    
+                    <div class="exercise-block">
+                        <div class="exercise-title">
+                            <span>Reading Comprehension</span>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">1</div>
+                            <div class="question-text">When was the Internet invented?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">2</div>
+                            <div class="question-text">What was the original use of the Internet?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">3</div>
+                            <div class="question-text">What can you do on the Internet?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">4</div>
+                            <div class="question-text">.What are the main problems with the Internet?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">5</div>
+                            <div class="question-text">How to ensure safe Internet use?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">6</div>
+                            <div class="question-text">Have you ever clicked a suspicious link? What happened?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">7</div>
+                            <div class="question-text">Can AI replace human moderators on social media?</div>
+                        </div>
+                        
+                        <!---<button class="answer-toggle" data-target="reading-answers">
+                            <i class="fas fa-chevron-down"></i>
+                            Show Answers
+                        </button>
+                        
+                        <div class="answer-content" id="reading-answers">
+                            <ol class="answer-list">
+                                <li><span class="correct-answer">A digital native is someone born during the age of digital technology who is familiar with computers and the internet from an early age.</span></li>
+                                <li><span class="correct-answer">Two benefits are: 1) Unprecedented opportunities for learning, 2) Enhanced social interaction and connectivity.</span></li>
+                                <li><span class="correct-answer">Digital detox has become popular as people seek to reclaim their attention, improve work-life balance, and enhance overall wellbeing by taking intentional breaks from technology.</span></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </section>-->
+
+            <!-- Listening Section -->
+            <section class="lesson-section" id="listening-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <h2 class="block-title">Listening: Work-Life Balance</h2>
+                    </div>
+
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/AChpog11lM0?si=TZlM_fOhUq6u8EtK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    
+                    <div class="exercise-block">
+                        <div class="exercise-title">
+                            <span>Listening Comprehension</span>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">1</div>
+                            <div class="question-text">Michael says work-life balance is about “setting boundaries”. What does he mean by this? Can you explain it in your own words?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">2</div>
+                            <div class="question-text">What is the first practical tip Michael gives for improving work-life balance?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">3</div>
+                            <div class="question-text">Michael mentions checking work emails in the evening. Why does he suggest this might be a problem for our “work-life balance”?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">4</div>
+                            <div class="question-text">One of Michael’s tips involves using a calendar. How exactly does he suggest we use it to help with balance?</div>
+                        </div>
+
+                        <div class="exercise-question">
+                            <div class="question-number">5</div>
+                            <div class="question-text">Which of Michael’s tips do you think would be most helpful for you personally? Why?</div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Speaking Section -->
+            <section class="lesson-section" id="speaking-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h2 class="block-title">Speaking: Digital Discussion</h2>
+                    </div>
+                    
+                    <div class="speaking-prompts">
+                        <div class="prompt-card">
+                            <div class="prompt-number">Question 1</div>
+                            <p>How often do you use the net? What do you usually use it for?</p>
+                        </div>
+                        
+                        <div class="prompt-card">
+                            <div class="prompt-number">Question 2</div>
+                            <p>Do you think digitalization is good? Why?</p>
+                        </div>
+                        
+                        <div class="prompt-card">
+                            <div class="prompt-number">Question 3</div>
+                            <p>What other uses can the Internet have?</p>
+                        </div>
+
+                    </div>
+                    
+                    <div class="tip-box">
+                        <div class="tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="tip-title">Speaking Tips</div>
+                        <div class="tip-content">
+                            • Use the vocabulary from this lesson<br>
+                            • Give specific examples<br>
+                            • Consider both sides of the argument<br>
+                            • Practice with a partner if possible
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+            <!-- Writing Section -->
+            <section class="lesson-section" id="writing-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h2 class="block-title">Writing: Opinion Essay</h2>
+                    </div>
+                    
+                    <div class="writing-prompt">
+                        <div class="prompt-title">Writing Task</div>
+                        <p>Write a small essay(5 – 10 sentences) about the Internet, include 2 advantages of it and 2 downsides.</p>
+                        <!--<p style="font-weight: 700; margin: 1rem 0; color: var(--secondary); font-size: 1.1rem;">
+                            "Do you think social media has had a positive or negative impact on society overall? Give reasons for your opinion."
+                        </p>-->
+                        <p style="font-size: 0.95rem;"><i class="fas fa-lightbulb" style="color: var(--accent); margin-right: 0.5rem;"></i> <strong>Tip:</strong> Try to use at least 3 vocabulary words from this lesson in your response.</p>
+                    </div>
+                    
+                    <div class="writing-block">
+                        <textarea class="writing-textarea" id="writingArea" placeholder="Start writing your answer here... Remember to structure your paragraph with a clear topic sentence, supporting arguments, and a conclusion."></textarea>
+                        <div class="word-counter">
+                            Word count: <span class="word-count" id="wordCount">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <div class="tip-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <div class="tip-title">Writing Structure</div>
+                        <div class="tip-content">
+                            <strong>Introduction:</strong> State your opinion clearly<br>
+                            <strong>Body:</strong> 2-3 supporting arguments with examples<br>
+                            <strong>Conclusion:</strong> Summarize your main points<br>
+                            <strong>Word count:</strong> Aim for 120-150 words
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Project Section -->
+            <section class="lesson-section" id="project-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h2 class="block-title">Project: Digital Diary</h2>
+                    </div>
+                    
+                    <div class="project-block">
+                        <div class="prompt-title">Project: Digital Habits Diary</div>
+                        <p>Track your digital device usage for 3 days and analyze your habits to become more mindful of your screen time.</p>
+                        
+                        <ol class="project-steps">
+                            <li>Create a simple table to track your screen time across different devices</li>
+                            <li>Note what activities you do on each device (work, social media, entertainment, etc.)</li>
+                            <li>Identify any patterns or areas of excessive usage</li>
+                            <li>Write a short report (200-250 words) with your findings and observations</li>
+                            <li>Suggest one practical change you could make to improve your digital habits</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <div class="tip-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="tip-title">Project Tips</div>
+                        <div class="tip-content">
+                            • Use a notebook or digital document to track your usage<br>
+                            • Be honest about your screen time<br>
+                            • Look for patterns (e.g., most usage in evenings)<br>
+                            • Set realistic goals for improvement
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Навигация -->
+            <div class="easy-footer">
+                <button class="nav-btn nav-btn-prev" id="prev-section">
+                    <i class="fas fa-arrow-left"></i>
+                    Previous Section
+                </button>
+                
+                <div style="text-align: center;">
+                    <div style="font-weight: 600; color: var(--text);">Lesson Progress</div>
+                    <div style="color: var(--primary); font-weight: 700;" id="progress-text">Section 1 of 6</div>
+                </div>
+                
+                <!--<button class="nav-btn nav-btn-primary" href="lesson1.2.html">
+                    Next Section
+                    <i class="fas fa-arrow-right"></i>
+                </button>-->
+                <a class="nav-btn nav-btn-primary" href="lesson1.2.html">Next Lesson</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Данные о секциях
+        const sections = [
+            { 
+                id: 'vocabulary-section', 
+                title: 'Vocabulary: Tech & Social Media', 
+                number: 1,
+                navSelector: '[data-target="vocabulary-section"]'
+            },
+            { 
+                id: 'reading-section', 
+                title: 'Reading: Digital Revolution', 
+                number: 2,
+                navSelector: '[data-target="reading-section"]'
+            },
+            { 
+                id: 'listening-section', 
+                title: 'Listening: Work-Life Balance', 
+                number: 3,
+                navSelector: '[data-target="listening-section"]'
+            },
+            { 
+                id: 'speaking-section', 
+                title: 'Speaking: Digital Discussion', 
+                number: 4,
+                navSelector: '[data-target="speaking-section"]'
+            },
+            { 
+                id: 'writing-section', 
+                title: 'Writing: Opinion Essay', 
+                number: 5,
+                navSelector: '[data-target="writing-section"]'
+            },
+            { 
+                id: 'project-section', 
+                title: 'Project: Digital Diary', 
+                number: 6,
+                navSelector: '[data-target="project-section"]'
+            }
+        ];
+
+        let currentSectionIndex = 0;
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена. Инициализация навигации...');
+            
+            // Настройка навигации в боковой панели
+            const navItems = document.querySelectorAll('.lesson-nav-item');
+            console.log('Найдено пунктов меню:', navItems.length);
+            
+            navItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Клик по пункту меню:', index + 1);
+                    
+                    const targetId = this.getAttribute('data-target');
+                    console.log('Целевая секция:', targetId);
+                    
+                    if (targetId) {
+                        navigateToSection(targetId);
+                    } else {
+                        console.error('Атрибут data-target не найден!');
+                    }
+                });
+            });
+
+            // Настройка кнопок навигации
+            const prevBtn = document.getElementById('prev-section');
+            const nextBtn = document.getElementById('next-section');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    console.log('Кнопка "Previous Section" нажата');
+                    if (currentSectionIndex > 0) {
+                        const targetId = sections[currentSectionIndex - 1].id;
+                        navigateToSection(targetId);
+                    }
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    console.log('Кнопка "Next Section" нажата');
+                    if (currentSectionIndex < sections.length - 1) {
+                        const targetId = sections[currentSectionIndex + 1].id;
+                        navigateToSection(targetId);
+                    }
+                });
+            }
+
+            // Настройка кнопок "Show Answers"
+            document.querySelectorAll('.answer-toggle').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        toggleAnswers(targetId, this);
+                    }
+                });
+            });
+
+            // Настройка отслеживания ввода текста
+            const textarea = document.getElementById('writingArea');
+            const wordCount = document.getElementById('wordCount');
+            
+            if (textarea && wordCount) {
+                textarea.addEventListener('input', function() {
+                    const text = this.value.trim();
+                    const words = text ? text.split(/\s+/).length : 0;
+                    wordCount.textContent = words;
+                });
+            }
+
+            // Инициализация первой секции
+            updateNavigation();
+            updateProgress();
+            
+            // Добавляем обработчик прокрутки для отслеживания активной секции
+            window.addEventListener('scroll', handleScroll);
+            
+            // Прокручиваем к началу страницы
+            window.scrollTo(0, 0);
+        });
+
+        // Функция навигации по секциям
+        function navigateToSection(sectionId) {
+            console.log('Навигация к секции:', sectionId);
+            
+            const section = document.getElementById(sectionId);
+            if (section) {
+                console.log('Секция найдена, прокручиваем...');
+                
+                // Плавная прокрутка к секции
+                section.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start'
+                });
+                
+                // Обновляем активную секцию в навигации
+                updateActiveSection(sectionId);
+                
+                // Обновляем текущую секцию в заголовке
+                const sectionData = sections.find(s => s.id === sectionId);
+                if (sectionData) {
+                    document.getElementById('current-section').textContent = sectionData.title;
+                    currentSectionIndex = sections.findIndex(s => s.id === sectionId);
+                    updateNavigation();
+                    updateProgress();
+                }
+            } else {
+                console.error('Секция не найдена:', sectionId);
+                console.log('Доступные секции:', sections.map(s => s.id));
+            }
+        }
+
+        // Обновление активной секции в навигации
+        function updateActiveSection(sectionId) {
+            console.log('Обновление активной секции:', sectionId);
+            
+            // Убираем активный класс у всех пунктов меню
+            const navItems = document.querySelectorAll('.lesson-nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Добавляем активный класс к соответствующему пункту меню
+            const sectionData = sections.find(s => s.id === sectionId);
+            if (sectionData) {
+                const navItem = document.querySelector(sectionData.navSelector);
+                if (navItem) {
+                    navItem.classList.add('active');
+                    console.log('Пункт меню активирован:', sectionData.title);
+                }
+            }
+        }
+
+        // Обновление навигационных кнопок
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-section');
+            const nextBtn = document.getElementById('next-section');
+            
+            if (currentSectionIndex === 0) {
+                prevBtn.style.opacity = '0.5';
+                prevBtn.style.cursor = 'not-allowed';
+                prevBtn.disabled = true;
+            } else {
+                prevBtn.style.opacity = '1';
+                prevBtn.style.cursor = 'pointer';
+                prevBtn.disabled = false;
+            }
+            
+            if (currentSectionIndex === sections.length - 1) {
+                nextBtn.style.opacity = '0.5';
+                nextBtn.style.cursor = 'not-allowed';
+                nextBtn.disabled = true;
+            } else {
+                nextBtn.style.opacity = '1';
+                nextBtn.style.cursor = 'pointer';
+                nextBtn.disabled = false;
+            }
+        }
+
+        // Обновление прогресса
+        function updateProgress() {
+            const progressPercent = Math.round(((currentSectionIndex + 1) / sections.length) * 100);
+            document.getElementById('progress-percent').textContent = `${progressPercent}%`;
+            document.getElementById('section-counter').textContent = `Section ${currentSectionIndex + 1} of ${sections.length}`;
+            document.getElementById('progress-text').textContent = `Section ${currentSectionIndex + 1} of ${sections.length}`;
+        }
+
+        // Обработчик прокрутки для отслеживания активной секции
+        function handleScroll() {
+            const scrollPosition = window.scrollY + 150; // Добавляем отступ для учета шапки
+            
+            // Находим текущую секцию на основе позиции прокрутки
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i].id);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    if (scrollPosition >= sectionTop) {
+                        if (currentSectionIndex !== i) {
+                            currentSectionIndex = i;
+                            updateActiveSection(sections[i].id);
+                            updateNavigation();
+                            updateProgress();
+                            document.getElementById('current-section').textContent = sections[i].title;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Функция для показа/скрытия ответов
+        function toggleAnswers(targetId, button) {
+            const answerContent = document.getElementById(targetId);
+            const icon = button.querySelector('i');
+            
+            if (answerContent.classList.contains('active')) {
+                answerContent.classList.remove('active');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+                button.classList.remove('active');
+            } else {
+                answerContent.classList.add('active');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+                button.classList.add('active');
+            }
+        }
+
+        // Добавляем консоль для отладки
+        console.log('Скрипт загружен и готов к работе');
+        console.log('Доступные секции:', sections);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy English | Influencers & Personal Branding</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4688e2;
+            --primary-light: #5d9cff;
+            --secondary: #166088;
+            --accent: #FF6B6B;
+            --accent-light: #FF8E8E;
+            --success: #4CAF7D;
+            --warning: #FFB74D;
+            --light-bg: #F9FAFC;
+            --light-blue: #EDF2F7;
+            --light-green: #F0FFF4;
+            --light-yellow: #FFF9E6;
+            --light-orange: #FFEFE6;
+            --light-purple: #F5F0FF;
+            --border: #E2E8F0;
+            --text: #2D3748;
+            --text-light: #718096;
+            --radius: 10px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, .lesson-main-title {
+            font-family: 'Source Serif Pro', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .easy-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            padding: 1.5rem 2rem;
+            color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+
+        .unit-info {
+            text-align: center;
+        }
+
+        .unit-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .lesson-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .user-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .progress-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .easy-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            padding: 2rem;
+            gap: 2rem;
+        }
+
+        .easy-sidebar {
+            width: 280px;
+            flex-shrink: 0;
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            border: 1px solid var(--border);
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .lesson-nav {
+            list-style: none;
+        }
+
+        .lesson-nav-item {
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: var(--text);
+            user-select: none;
+        }
+
+        .lesson-nav-item:hover {
+            background: var(--light-blue);
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+
+        .lesson-nav-item.active {
+            background: var(--light-blue);
+            color: var(--primary);
+            border-left-color: var(--primary);
+            font-weight: 600;
+        }
+
+        .lesson-number {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: var(--light-blue);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            margin-right: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .active .lesson-number {
+            background: var(--primary);
+            color: white;
+        }
+
+        .easy-content {
+            flex: 1;
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .lesson-section {
+            scroll-margin-top: 120px;
+            padding-bottom: 3rem;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-section:last-child {
+            border-bottom: none;
+        }
+
+        .lesson-header {
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lesson-tag {
+            display: inline-block;
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-main-title {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lesson-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .content-block {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .block-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .block-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .block-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .reading-block {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+
+        .reading-text {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .highlight-term {
+            background-color: rgba(255, 107, 107, 0.1);
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .exercise-block {
+            background: var(--light-bg);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .exercise-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+        }
+
+        .exercise-question {
+            margin-bottom: 1.25rem;
+            padding-left: 1.75rem;
+            position: relative;
+        }
+
+        .question-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary);
+            font-weight: 700;
+            font-family: 'Source Serif Pro', serif;
+        }
+
+        .question-text {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .answer-toggle {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            margin-top: 0.5rem;
+        }
+
+        .answer-toggle:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .answer-toggle.active {
+            background: var(--secondary);
+        }
+
+        .answer-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        .answer-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .answer-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 1rem;
+        }
+
+        .answer-content.active {
+            max-height: 500px;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .answer-list {
+            list-style-type: none;
+        }
+
+        .answer-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .answer-list li:last-child {
+            border-bottom: none;
+        }
+
+        .correct-answer {
+            color: var(--success);
+            font-weight: 600;
+        }
+
+        .answer-explanation {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 0.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+        }
+
+        .writing-block {
+            margin: 2rem 0;
+        }
+
+        .writing-prompt {
+            background: linear-gradient(to right, var(--light-yellow) 0%, rgba(255, 249, 230, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--warning);
+        }
+
+        .prompt-title {
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .writing-textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            resize: vertical;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .writing-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.1);
+        }
+
+        .word-counter {
+            text-align: right;
+            margin-top: 0.75rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .word-count {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .listening-block {
+            background: linear-gradient(to right, var(--light-purple) 0%, rgba(245, 240, 255, 0.7) 100%);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border-left: 4px solid #9B5DE5;
+            margin: 1.5rem 0;
+        }
+
+        .audio-simulator {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+            padding: 1.25rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .audio-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #9B5DE5 0%, #C77DFF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .audio-info {
+            flex: 1;
+        }
+
+        .audio-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .audio-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .speaking-prompts {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .prompt-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .prompt-number {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: 600;
+            margin-right: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .tip-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 2px solid var(--light-blue);
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .tip-icon {
+            position: absolute;
+            top: -12px;
+            left: 1.5rem;
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .tip-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .tip-content {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 1.5rem 0;
+        }
+
+        .vocab-table th {
+            background: var(--light-blue);
+            color: var(--primary);
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .vocab-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .vocab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vocab-table tr:hover td {
+            background: var(--light-bg);
+        }
+
+        .vocab-word {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .vocab-pronunciation {
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .vocab-meaning {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .vocab-example {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--light-bg);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            border-left: 3px solid var(--primary-light);
+        }
+
+        .easy-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .page-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid var(--border);
+            background: white;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn-primary {
+            background: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn-primary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        @media (max-width: 1200px) {
+            .easy-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .easy-sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 1.5rem;
+            }
+            
+            .easy-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .easy-header {
+                padding: 1.25rem 1.5rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .user-progress {
+                margin-top: 0.5rem;
+            }
+            
+            .easy-content {
+                padding: 1.5rem;
+            }
+            
+            .lesson-main-title {
+                font-size: 2rem;
+            }
+            
+            .vocab-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .easy-footer {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .page-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .block-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .block-icon {
+                margin-right: 0;
+            }
+            
+            .audio-simulator {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+
+        /* Styles for grammar exercises */
+        .task-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .task-item {
+            background: transparent;
+            padding: 0.5rem 0;
+            border-left: none;
+            transition: all 0.2s ease;
+            box-shadow: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .task-item.correct .sentence {
+            color: var(--success);
+            font-weight: 500;
+        }
+
+        .task-item.incorrect .sentence {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .sentence {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--text);
+            line-height: 1.5;
+            transition: color 0.2s ease;
+        }
+
+        .sentence strong {
+            color: var(--primary);
+            background: var(--light-blue);
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .answer-input {
+            flex: 1;
+            max-width: 500px;
+            padding: 0.6rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            background: white;
+        }
+
+        .answer-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(70, 136, 226, 0.1);
+        }
+
+        .paragraph {
+            margin-bottom: 25px;
+            padding-left: 40px;
+            position: relative;
+        }
+
+        .paragraph:last-child {
+            margin-bottom: 0;
+        }
+
+        .paragraph-letter {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .paragraph-text {
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .status-icon {
+            font-size: 1.3rem;
+            width: 30px;
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .check-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            flex: 0 1 auto;
+            justify-content: center;
+        }
+
+        .check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .reset-btn {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            flex: 0 1 auto;
+            justify-content: center;
+        }
+
+        .reset-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .progress-bar {
+            background: var(--light-bg);
+            height: 8px;
+            border-radius: 10px;
+            margin: 1rem 0 1.5rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--primary));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .example-box {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .example-title {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="easy-header">
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-book-open logo-icon"></i>
+                <span>Easy English</span>
+            </div>
+            
+            <div class="unit-info">
+                <div class="unit-title">Unit 1 • Digital Culture</div>
+                <div class="lesson-title" id="current-section">Privacy vs. Entertainment</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер -->
+    <div class="easy-container">
+        <!-- Боковая панель -->
+        <aside class="easy-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Lesson Contents</div>
+                <ul class="lesson-nav">
+                    <li class="lesson-nav-item active" data-target="grammar-exercises">
+                        <span class="lesson-number">1</span>
+                        Grammar Practice
+                    </li>
+                    <li class="lesson-nav-item" data-target="comprehension-section">
+                        <span class="lesson-number">2</span>
+                        Reading
+                    </li>
+                    <li class="lesson-nav-item" data-target="description">
+                        <span class="lesson-number">3</span>
+                        Describing a picture
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Основной контент -->
+        <main class="easy-content">
+            <!-- Заголовок урока -->
+            <header class="lesson-header">
+                <div class="lesson-tag">Lesson 1.5</div>
+                <h1 class="lesson-main-title">Privacy vs. Entertainment</h1>
+                <p class="lesson-subtitle">In today's digital world, we often sacrifice privacy for entertainment through social media and streaming services. This lesson explores the challenging balance between protecting our personal data and enjoying viral content and online fun.</p>
+            </header>
+
+            <!-- Grammar practice Section -->
+
+            <!-- ГДЕ МЕНЯТЬ ОТВЕТЫ: В ЭТОМ БЛОКЕ НАХОДЯТСЯ ПРАВИЛЬНЫЕ ОТВЕТЫ -->
+            <script>
+                // ===============================================
+                // 🔧 НАСТРОЙКА ПРАВИЛЬНЫХ ОТВЕТОВ
+                // Меняй значения в кавычках на нужные ответы
+                // ===============================================
+                const CORRECT_ANSWERS = {
+                    // Exercise 1 - Defining Relative Clauses
+                    101: "who",
+                    102: "which",
+                    103: "where",
+                    104: "whose",
+                    105: "why",
+                    106: "that",
+                    107: "which",
+                    108: "where",
+                    109: "who",
+                    110: "whose",
+                    
+                    // Exercise 2 - Non-Defining Relative Clauses (полные предложения)
+                    201: "My brother, who lives in London, is a doctor.",
+                    202: "The Eiffel Tower, which was built in 1889, is in Paris.",
+                    203: "Professor Smith, whose lectures are always interesting, retired last year.",
+                    204: "Summer, when we have the most tourists, is very busy.",
+                    205: "The British Museum, where I spent many hours, is free to enter.",
+                    
+                    // Exercise 3 - Word Formation (Nouns)
+                    301: "information",
+                    302: "population",
+                    303: "development",
+                    304: "imagination",
+                    305: "permission",
+                    306: "discussion",
+                    307: "competition",
+                    308: "education",
+                    309: "improvement",
+                    310: "decision",
+                    
+                    // Exercise 4 - Text: Space Exploration (словообразование + времена)
+                    401: "exploration",
+                    402: "scientific",
+                    403: "discovery",
+                    404: "achievement",
+                    405: "has been",
+                    406: "development",
+                    407: "commercial",
+                    408: "tourists",
+                    409: "will continue",
+                    410: "possibilities",
+                    
+                    // Exercise 5 - Text: The Future of Work (словообразование + времена)
+                    501: "technological",
+                    502: "automation",
+                    503: "employment",
+                    504: "flexible",
+                    505: "are becoming",
+                    506: "specialized",
+                    507: "communication",
+                    508: "are learning",
+                    509: "increasingly",
+                    510: "uncertain"
+                };
+                // ===============================================
+            </script>
+
+            <!-- Exercise 1 - Defining Relative Clauses -->
+            <section class="lesson-section" id="grammar-exercises">
+
+                <div class="block-header">
+                    <div class="block-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h2 class="block-title">Grammar Practice</h2>
+                </div>
+
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i>
+                        Ex. 1 Defining Relative Clauses
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Fill in the blanks with the correct relative pronoun (who, which, that, where, whose, why).</p>
+                        <p><strong>Example:</strong> The man ___ lives next door is a teacher. → <span style="color: var(--success);">who</span></p>
+                    </div>
+                    
+                    <div class="stats" style="margin-top: 0; margin-bottom: 1rem;">
+                        <span><i class="far fa-check-circle" style="color: var(--success);"></i> Правильно: <span id="correctCount1">0</span>/10</span>
+                        <span><i class="far fa-times-circle" style="color: var(--accent);"></i> Неправильно: <span id="incorrectCount1">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar" style="margin: 1rem 0;">
+                        <div class="progress-fill" id="progressFill1" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="tasksContainer1"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" id="checkAllBtn1">
+                            <i class="fas fa-check-circle"></i> Проверить все
+                        </button>
+                        <button class="reset-btn" id="resetBtn1">
+                            <i class="fas fa-redo-alt"></i> Сбросить
+                        </button>
+                    </div>
+                    
+                    <button class="answer-toggle" data-target="answers1" style="margin-top: 1rem;">
+                        <i class="fas fa-chevron-down"></i> Показать правильные ответы
+                    </button>
+                    <div class="answer-content" id="answers1">
+                        <ol class="answer-list">
+                            <li><span class="correct-answer">1. The woman who lives next door is a doctor. → who</span></li>
+                            <li><span class="correct-answer">2. This is the book which changed my life. → which/that</span></li>
+                            <li><span class="correct-answer">3. That's the restaurant where we had our first date. → where</span></li>
+                            <li><span class="correct-answer">4. I know someone whose car was stolen. → whose</span></li>
+                            <li><span class="correct-answer">5. Tell me the reason why you were late. → why</span></li>
+                            <li><span class="correct-answer">6. The film that we saw last night was boring. → that/which</span></li>
+                            <li><span class="correct-answer">7. The hotel where we stayed was expensive. → where</span></li>
+                            <li><span class="correct-answer">8. The artist who painted this is famous. → who</span></li>
+                            <li><span class="correct-answer">9. The student who won the prize is my friend. → who</span></li>
+                            <li><span class="correct-answer">10. Is this the man whose daughter works here? → whose</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+            <!-- Exercise 2 - Non-Defining Relative Clauses -->
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i>
+                        Ex. 2 Non-Defining Relative Clauses
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Complete the sentences with the correct relative pronoun and add commas where necessary. Write the full sentence.</p>
+                        <p><strong>Example:</strong> My sister ___ lives in New York is visiting us. → <span style="color: var(--success);">My sister, who lives in New York, is visiting us.</span></p>
+                    </div>
+                    
+                    <div class="stats" style="margin-top: 0; margin-bottom: 1rem;">
+                        <span><i class="far fa-check-circle" style="color: var(--success);"></i> Правильно: <span id="correctCount2">0</span>/5</span>
+                        <span><i class="far fa-times-circle" style="color: var(--accent);"></i> Неправильно: <span id="incorrectCount2">0</span>/5</span>
+                    </div>
+                    <div class="progress-bar" style="margin: 1rem 0;">
+                        <div class="progress-fill" id="progressFill2" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="tasksContainer2"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" id="checkAllBtn2">
+                            <i class="fas fa-check-circle"></i> Проверить все
+                        </button>
+                        <button class="reset-btn" id="resetBtn2">
+                            <i class="fas fa-redo-alt"></i> Сбросить
+                        </button>
+                    </div>
+                    
+                    <button class="answer-toggle" data-target="answers2" style="margin-top: 1rem;">
+                        <i class="fas fa-chevron-down"></i> Показать правильные ответы
+                    </button>
+                    <div class="answer-content" id="answers2">
+                        <ol class="answer-list">
+                            <li><span class="correct-answer">My brother, who lives in London, is a doctor.</span></li>
+                            <li><span class="correct-answer">The Eiffel Tower, which was built in 1889, is in Paris.</span></li>
+                            <li><span class="correct-answer">Professor Smith, whose lectures are always interesting, retired last year.</span></li>
+                            <li><span class="correct-answer">Summer, when we have the most tourists, is very busy.</span></li>
+                            <li><span class="correct-answer">The British Museum, where I spent many hours, is free to enter.</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+            <!-- Exercise 3 - Word Formation (Nouns) -->
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i>
+                        Ex. 3 Word Formation: Nouns
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Complete the sentences with the correct noun form of the word in brackets.</p>
+                        <p><strong>Example:</strong> We need more ___ (inform) about the project. → <span style="color: var(--success);">information</span></p>
+                    </div>
+                    
+                    <div class="stats" style="margin-top: 0; margin-bottom: 1rem;">
+                        <span><i class="far fa-check-circle" style="color: var(--success);"></i> Правильно: <span id="correctCount3">0</span>/10</span>
+                        <span><i class="far fa-times-circle" style="color: var(--accent);"></i> Неправильно: <span id="incorrectCount3">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar" style="margin: 1rem 0;">
+                        <div class="progress-fill" id="progressFill3" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="tasksContainer3"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" id="checkAllBtn3">
+                            <i class="fas fa-check-circle"></i> Проверить все
+                        </button>
+                        <button class="reset-btn" id="resetBtn3">
+                            <i class="fas fa-redo-alt"></i> Сбросить
+                        </button>
+                    </div>
+                    
+                    <button class="answer-toggle" data-target="answers3" style="margin-top: 1rem;">
+                        <i class="fas fa-chevron-down"></i> Показать правильные ответы
+                    </button>
+                    <div class="answer-content" id="answers3">
+                        <ol class="answer-list">
+                            <li><span class="correct-answer">1. We need more information (inform) about the project.</span></li>
+                            <li><span class="correct-answer">2. The population (populate) of the city is growing rapidly.</span></li>
+                            <li><span class="correct-answer">3. The development (develop) of new technology is exciting.</span></li>
+                            <li><span class="correct-answer">4. Children have a wonderful imagination (imagine).</span></li>
+                            <li><span class="correct-answer">5. You need permission (permit) to enter this area.</span></li>
+                            <li><span class="correct-answer">6. We had a long discussion (discuss) about the problem.</span></li>
+                            <li><span class="correct-answer">7. The competition (compete) was very intense.</span></li>
+                            <li><span class="correct-answer">8. Education (educate) is important for everyone.</span></li>
+                            <li><span class="correct-answer">9. There has been a significant improvement (improve) in sales.</span></li>
+                            <li><span class="correct-answer">10. It was a difficult decision (decide) to make.</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+            <!-- Exercise 4 - Text: Space Exploration -->
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i>
+                        Ex. 4 Text: Space Exploration
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Read the text and fill in the blanks with the correct form of the words in brackets (noun, adjective, verb tense).</p>
+                    </div>
+                    
+                    <div class="text-block">
+                        <p>Space (1) ________ (explore) has always fascinated humanity. Since the first (2) ________ (science) discoveries about the cosmos, we have dreamed of reaching the stars. The (3) ________ (discover) of new planets and galaxies continues to amaze us. One of the greatest (4) ________ (achieve) of the 20th century (5) ________ (be) the moon landing in 1969.</p>
+                        <p>In recent years, the (6) ________ (develop) of new technologies has made space travel more accessible. (7) ________ (commerce) companies like SpaceX are now planning to send (8) ________ (tour) into orbit. Scientists believe that we (9) ________ (continue) to explore Mars in the coming decades. The (10) ________ (possible) seem endless.</p>
+                    </div>
+                    
+                    <div class="stats" style="margin-top: 0; margin-bottom: 1rem;">
+                        <span><i class="far fa-check-circle" style="color: var(--success);"></i> Правильно: <span id="correctCount4">0</span>/10</span>
+                        <span><i class="far fa-times-circle" style="color: var(--accent);"></i> Неправильно: <span id="incorrectCount4">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar" style="margin: 1rem 0;">
+                        <div class="progress-fill" id="progressFill4" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="tasksContainer4"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" id="checkAllBtn4">
+                            <i class="fas fa-check-circle"></i> Проверить все
+                        </button>
+                        <button class="reset-btn" id="resetBtn4">
+                            <i class="fas fa-redo-alt"></i> Сбросить
+                        </button>
+                    </div>
+                    
+                    <button class="answer-toggle" data-target="answers4" style="margin-top: 1rem;">
+                        <i class="fas fa-chevron-down"></i> Показать правильные ответы
+                    </button>
+                    <div class="answer-content" id="answers4">
+                        <ol class="answer-list">
+                            <li><span class="correct-answer">1. exploration (explore)</span></li>
+                            <li><span class="correct-answer">2. scientific (science)</span></li>
+                            <li><span class="correct-answer">3. discovery (discover)</span></li>
+                            <li><span class="correct-answer">4. achievement (achieve)</span></li>
+                            <li><span class="correct-answer">5. was (be)</span></li>
+                            <li><span class="correct-answer">6. development (develop)</span></li>
+                            <li><span class="correct-answer">7. Commercial (commerce)</span></li>
+                            <li><span class="correct-answer">8. tourists (tour)</span></li>
+                            <li><span class="correct-answer">9. will continue (continue)</span></li>
+                            <li><span class="correct-answer">10. possibilities (possible)</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+            <!-- Exercise 5 - Text: The Future of Work -->
+                <div class="exercise-block">
+                    <div class="exercise-title">
+                        <i class="fas fa-pencil-alt"></i>
+                        Ex. 5 Text: The Future of Work
+                    </div>
+                    
+                    <div class="example-box">
+                        <div class="example-title">Instructions:</div>
+                        <p>Read the text and fill in the blanks with the correct form of the words in brackets (adjective, noun, verb tense, adverb).</p>
+                    </div>
+                    
+                    <div class="text-block">
+                        <p>The world of work is changing rapidly due to (1) ________ (technology) advancements. (2) ________ (Automate) is replacing many routine jobs, while new roles are being created. This transformation affects (3) ________ (employ) patterns across all sectors. Companies now offer more (4) ________ (flexibly) working arrangements, and remote positions (5) ________ (become) increasingly common.</p>
+                        <p>Workers need to acquire (6) ________ (special) skills to remain competitive. (7) ________ (Communicate) skills and digital literacy are essential. Many employees (8) ________ (learn) new technologies right now to adapt. The job market is (9) ________ (increase) competitive, and the future remains (10) ________ (certain) for many traditional professions.</p>
+                    </div>
+                    
+                    <div class="stats" style="margin-top: 0; margin-bottom: 1rem;">
+                        <span><i class="far fa-check-circle" style="color: var(--success);"></i> Правильно: <span id="correctCount5">0</span>/10</span>
+                        <span><i class="far fa-times-circle" style="color: var(--accent);"></i> Неправильно: <span id="incorrectCount5">0</span>/10</span>
+                    </div>
+                    <div class="progress-bar" style="margin: 1rem 0;">
+                        <div class="progress-fill" id="progressFill5" style="width: 0%;"></div>
+                    </div>
+                    
+                    <div class="task-list" id="tasksContainer5"></div>
+                    
+                    <div class="button-group">
+                        <button class="check-btn" id="checkAllBtn5">
+                            <i class="fas fa-check-circle"></i> Проверить все
+                        </button>
+                        <button class="reset-btn" id="resetBtn5">
+                            <i class="fas fa-redo-alt"></i> Сбросить
+                        </button>
+                    </div>
+                    
+                    <button class="answer-toggle" data-target="answers5" style="margin-top: 1rem;">
+                        <i class="fas fa-chevron-down"></i> Показать правильные ответы
+                    </button>
+                    <div class="answer-content" id="answers5">
+                        <ol class="answer-list">
+                            <li><span class="correct-answer">1. technological (technology)</span></li>
+                            <li><span class="correct-answer">2. Automation (automate)</span></li>
+                            <li><span class="correct-answer">3. employment (employ)</span></li>
+                            <li><span class="correct-answer">4. flexible (flexibly)</span></li>
+                            <li><span class="correct-answer">5. are becoming (become)</span></li>
+                            <li><span class="correct-answer">6. specialized (special)</span></li>
+                            <li><span class="correct-answer">7. Communication (communicate)</span></li>
+                            <li><span class="correct-answer">8. are learning (learn)</span></li>
+                            <li><span class="correct-answer">9. increasingly (increase)</span></li>
+                            <li><span class="correct-answer">10. uncertain (certain)</span></li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reading Section -->
+            <section class="lesson-section" id="reading-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h2 class="block-title">Reading: What is an Influencer?</h2>
+                    </div>
+                    
+                    <div class="reading-block">
+                        <div class="reading-text">
+                            <p>The internet has become an essential part of everyone’s lives as well as the global economic climate. Recently, the worldwide web has been dominated by the creativity of social networking technologies and blogs. Today, a sizable portion of the global population uses social networking platforms to communicate with friends and family, as well as to share their whole lives on the internet.</p>
+                            
+                            <p style="margin-top: 1rem;">The regular social media websites, such as Facebook, Twitter, and Instagram, not only allow people to build profiles. Many other websites need registration as well as the construction of a profile. As a result of all these, people are going to certainly post their private information on these sites, and for that reason, it often becomes accessible to any individual worldwide as it is on the internet. This may turn into a severe concern with regards to identity theft, and may additionally result in theft as well as stalking. People can utilize your private information and attempt to obtain personal, crucial numbers associated with bank accounts or credit cards, which may consequently result in theft in severe cases. In the case of stalking, though perhaps not too frequent, individuals having mental problems or an abnormal infatuation with another individual can make use of the private information as well as daily activities that a person shares on the internet to go to the extreme conditions of stalking them.</p>
+                            
+                            <p style="margin-top: 1rem;">There are lots of adverse implications associated with sharing information on the internet, but people take pleasure in keeping in touch with families and friends regardless of physical distance, as well as keeping themselves updated in relation to essential functions in their lifestyles. Social networking sites are not a negative element, but they ought to be utilized in a way that a person’s privacy is secured. To guarantee better online privacy, social media websites ought to provide enhanced privacy alternatives, and individuals, as well as parents, need to educate themselves as well as other people on the way to maintain their data security whenever browsing the internet.</p>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- КАРТИНКА 1-->
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <img src="pictures/Big-Data-in-Media-Entertainment.jpg.webp" 
+                            alt="Social Media Addiction3" 
+                            style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                    </div>
+            </section>
+
+            <!-- Reading Comprehension Section -->
+            <section class="lesson-section" id="comprehension-section">
+                <div class="content-block">
+                    <div class="block-header">
+                        <div class="block-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <h2 class="block-title">Reading Comprehension</h2>
+                    </div>
+                    
+                    <div class="exercise-block">
+                        <div class="exercise-title">
+                            <span>Answer the questions based on the text</span>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">1</div>
+                            <div class="question-text">What can posted private information lead to?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">2</div>
+                            <div class="question-text">What good can sharing one’s information cause?</div>
+                        </div>
+                        
+                        <div class="exercise-question">
+                            <div class="question-number">3</div>
+                            <div class="question-text">How to guarantee better online privacy?</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section" id="description">
+                <div class="block-header">
+                    <div class="block-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h2 class="block-title">Speaking Task: Describe the Picture</h2>
+                    
+                </div>
+                <p>Choose one of the pictures. Look at the picture above. Describe what you can see in 5-7 sentences.</p>
+                <div class="tip-box">
+                    <div class="tip-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="tip-title">Speaking Tips</div>
+                    <div class="tip-content">
+                        • Where the picture takes place<br>
+                        • What people are doing<br>
+                        • What objects you notice<br>
+                        • What the weather is like<br>
+                        • What emotions people show<br>
+                    </div>
+                </div>
+                <!-- КАРТИНКА 1-->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="pictures/Digital-citizenship-narrow.jpg" 
+                        alt="Social Media Addiction3" 
+                        style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
+
+                <!-- КАРТИНКА 2-->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="pictures/2.png" 
+                        alt="Social Media Addiction3" 
+                        style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
+                
+                <!-- КАРТИНКА 3-->
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <img src="pictures/175594_1.webp" 
+                        alt="Social Media Addiction3" 
+                        style="width: 100%; max-width: 800px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+                </div>
+            </section>
+
+
+            <!-- Навигация -->
+            <div class="easy-footer">
+                <a class="nav-btn nav-btn-primary" href="lesson1.4.html">Previous Lesson</a>
+                
+                <div style="text-align: center;">
+                    <div style="font-weight: 600; color: var(--text);">Lesson Progress</div>
+                    <div style="color: var(--primary); font-weight: 700;" id="progress-text">Section 1 of 5</div>
+                </div>
+                
+                <a class="nav-btn nav-btn-primary" href="lesson1.6.html">Next Lesson</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // ===============================================
+        // ДАННЫЕ ДЛЯ УПРАЖНЕНИЙ
+        // ===============================================
+        
+        // Exercise 1 - Defining Relative Clauses
+        const exercises1 = [
+            { id: 101, text: "1. The woman ___ lives next door is a doctor. (who/which/where)" },
+            { id: 102, text: "2. This is the book ___ changed my life. (who/which/where)" },
+            { id: 103, text: "3. That's the restaurant ___ we had our first date. (who/which/where)" },
+            { id: 104, text: "4. I know someone ___ car was stolen. (who/which/whose)" },
+            { id: 105, text: "5. Tell me the reason ___ you were late. (which/why/where)" },
+            { id: 106, text: "6. The film ___ we saw last night was boring. (who/which/where)" },
+            { id: 107, text: "7. The hotel ___ we stayed was expensive. (who/which/where)" },
+            { id: 108, text: "8. The artist ___ painted this is famous. (who/which/where)" },
+            { id: 109, text: "9. The student ___ won the prize is my friend. (who/which/whose)" },
+            { id: 110, text: "10. Is this the man ___ daughter works here? (who/which/whose)" }
+        ];
+
+        // Exercise 2 - Non-Defining Relative Clauses
+        const exercises2 = [
+            { id: 201, text: "1. My brother / lives in London / is a doctor. (who) → напишите полное предложение" },
+            { id: 202, text: "2. The Eiffel Tower / was built in 1889 / is in Paris. (which) → напишите полное предложение" },
+            { id: 203, text: "3. Professor Smith / lectures are always interesting / retired last year. (whose) → напишите полное предложение" },
+            { id: 204, text: "4. Summer / we have the most tourists / is very busy. (when) → напишите полное предложение" },
+            { id: 205, text: "5. The British Museum / I spent many hours / is free to enter. (where) → напишите полное предложение" }
+        ];
+
+        // Exercise 3 - Word Formation (Nouns)
+        const exercises3 = [
+            { id: 301, text: "1. We need more ________ (inform) about the project." },
+            { id: 302, text: "2. The ________ (populate) of the city is growing rapidly." },
+            { id: 303, text: "3. The ________ (develop) of new technology is exciting." },
+            { id: 304, text: "4. Children have a wonderful ________ (imagine)." },
+            { id: 305, text: "5. You need ________ (permit) to enter this area." },
+            { id: 306, text: "6. We had a long ________ (discuss) about the problem." },
+            { id: 307, text: "7. The ________ (compete) was very intense." },
+            { id: 308, text: "8. ________ (educate) is important for everyone." },
+            { id: 309, text: "9. There has been a significant ________ (improve) in sales." },
+            { id: 310, text: "10. It was a difficult ________ (decide) to make." }
+        ];
+
+        // Exercise 4 - Text: Space Exploration
+        const exercises4 = [
+            { id: 401, text: "1. Space ________ (explore)" },
+            { id: 402, text: "2. the first ________ (science) discoveries" },
+            { id: 403, text: "3. The ________ (discover) of new planets" },
+            { id: 404, text: "4. greatest ________ (achieve)" },
+            { id: 405, text: "5. ________ (be) the moon landing" },
+            { id: 406, text: "6. the ________ (develop) of new technologies" },
+            { id: 407, text: "7. ________ (commerce) companies" },
+            { id: 408, text: "8. send ________ (tour) into orbit" },
+            { id: 409, text: "9. we ________ (continue) to explore" },
+            { id: 410, text: "10. The ________ (possible) seem endless" }
+        ];
+
+        // Exercise 5 - Text: The Future of Work
+        const exercises5 = [
+            { id: 501, text: "1. due to ________ (technology) advancements" },
+            { id: 502, text: "2. ________ (Automate) is replacing" },
+            { id: 503, text: "3. affects ________ (employ) patterns" },
+            { id: 504, text: "4. more ________ (flexibly) working arrangements" },
+            { id: 505, text: "5. remote positions ________ (become) common" },
+            { id: 506, text: "6. acquire ________ (special) skills" },
+            { id: 507, text: "7. ________ (Communicate) skills" },
+            { id: 508, text: "8. employees ________ (learn) new technologies" },
+            { id: 509, text: "9. ________ (increase) competitive" },
+            { id: 510, text: "10. remains ________ (certain)" }
+        ];
+
+        // Данные о секциях
+        const sections = [
+            { id: 'exercise1', title: 'Defining Relative Clauses', number: 1, navSelector: '[data-target="exercise1"]' },
+            { id: 'exercise2', title: 'Non-Defining Relative Clauses', number: 2, navSelector: '[data-target="exercise2"]' },
+            { id: 'exercise3', title: 'Word Formation (Nouns)', number: 3, navSelector: '[data-target="exercise3"]' },
+            { id: 'exercise4', title: 'Text: Space Exploration', number: 4, navSelector: '[data-target="exercise4"]' },
+            { id: 'exercise5', title: 'Text: The Future of Work', number: 5, navSelector: '[data-target="exercise5"]' }
+        ];
+
+        let currentSectionIndex = 0;
+
+        // Функции для упражнений
+        function normalizeString(str) {
+            return str.toLowerCase()
+                     .replace(/[.,!?;:'"()]/g, '')
+                     .replace(/\s+/g, ' ')
+                     .trim();
+        }
+
+        function createTaskItem(task) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'task-item';
+            itemDiv.id = `task-${task.id}`;
+
+            const sentenceDiv = document.createElement('div');
+            sentenceDiv.className = 'sentence';
+            sentenceDiv.innerHTML = task.text;
+
+            const inputGroup = document.createElement('div');
+            inputGroup.className = 'input-group';
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'answer-input';
+            input.id = `input-${task.id}`;
+            input.placeholder = 'Введите ответ...';
+            
+            const statusSpan = document.createElement('span');
+            statusSpan.className = 'status-icon';
+            statusSpan.id = `status-${task.id}`;
+            statusSpan.innerHTML = '⚪';
+
+            inputGroup.appendChild(input);
+            inputGroup.appendChild(statusSpan);
+            
+            itemDiv.appendChild(sentenceDiv);
+            itemDiv.appendChild(inputGroup);
+
+            return itemDiv;
+        }
+
+        function loadExercises(containerId, exercises) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = '';
+                exercises.forEach(task => {
+                    container.appendChild(createTaskItem(task));
+                });
+            }
+        }
+
+        function updateStats(exerciseNum, ids) {
+            let correct = 0;
+            let incorrect = 0;
+            
+            ids.forEach(id => {
+                const input = document.getElementById(`input-${id}`);
+                if (input && input.value.trim() !== '') {
+                    const userAnswer = normalizeString(input.value.trim());
+                    const correctAnswer = normalizeString(CORRECT_ANSWERS[id]);
+                    
+                    if (userAnswer === correctAnswer) {
+                        correct++;
+                    } else {
+                        incorrect++;
+                    }
+                }
+            });
+            
+            const correctSpan = document.getElementById(`correctCount${exerciseNum}`);
+            const incorrectSpan = document.getElementById(`incorrectCount${exerciseNum}`);
+            const progressFill = document.getElementById(`progressFill${exerciseNum}`);
+            
+            if (correctSpan) correctSpan.textContent = correct;
+            if (incorrectSpan) incorrectSpan.textContent = incorrect;
+            
+            const total = ids.length;
+            const progress = (correct / total) * 100;
+            if (progressFill) progressFill.style.width = progress + '%';
+        }
+
+        function checkAnswer(taskId, exerciseNum, ids) {
+            const input = document.getElementById(`input-${taskId}`);
+            const status = document.getElementById(`status-${taskId}`);
+            const taskItem = document.getElementById(`task-${taskId}`);
+            
+            if (!input || !status || !taskItem) return false;
+            
+            const userAnswer = input.value.trim();
+            
+            if (userAnswer === '') {
+                status.innerHTML = '⚪';
+                taskItem.classList.remove('correct', 'incorrect');
+                updateStats(exerciseNum, ids);
+                return false;
+            }
+
+            const correctAnswer = CORRECT_ANSWERS[taskId];
+            const userNorm = normalizeString(userAnswer);
+            const correctNorm = normalizeString(correctAnswer);
+            
+            if (userNorm === correctNorm) {
+                status.innerHTML = '✅';
+                taskItem.classList.add('correct');
+                taskItem.classList.remove('incorrect');
+            } else {
+                status.innerHTML = '❌';
+                taskItem.classList.add('incorrect');
+                taskItem.classList.remove('correct');
+            }
+            
+            updateStats(exerciseNum, ids);
+            return true;
+        }
+
+        function checkAllAnswers(exerciseNum, ids) {
+            ids.forEach(id => {
+                checkAnswer(id, exerciseNum, ids);
+            });
+        }
+
+        function resetExercise(exerciseNum, ids) {
+            ids.forEach(id => {
+                const input = document.getElementById(`input-${id}`);
+                const status = document.getElementById(`status-${id}`);
+                const taskItem = document.getElementById(`task-${id}`);
+                
+                if (input) input.value = '';
+                if (status) status.innerHTML = '⚪';
+                if (taskItem) {
+                    taskItem.classList.remove('correct', 'incorrect');
+                }
+            });
+            updateStats(exerciseNum, ids);
+        }
+
+        function toggleAnswers(targetId, button) {
+            const answerContent = document.getElementById(targetId);
+            const icon = button.querySelector('i');
+            
+            if (answerContent.classList.contains('active')) {
+                answerContent.classList.remove('active');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+                button.classList.remove('active');
+            } else {
+                answerContent.classList.add('active');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+                button.classList.add('active');
+            }
+        }
+
+        function navigateToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                updateActiveSection(sectionId);
+                
+                const sectionData = sections.find(s => s.id === sectionId);
+                if (sectionData) {
+                    document.getElementById('current-section').textContent = sectionData.title;
+                    currentSectionIndex = sections.findIndex(s => s.id === sectionId);
+                    updateNavigation();
+                    updateProgress();
+                }
+            }
+        }
+
+        function updateActiveSection(sectionId) {
+            const navItems = document.querySelectorAll('.lesson-nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const sectionData = sections.find(s => s.id === sectionId);
+            if (sectionData) {
+                const navItem = document.querySelector(sectionData.navSelector);
+                if (navItem) {
+                    navItem.classList.add('active');
+                }
+            }
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-section');
+            const nextBtn = document.getElementById('next-section');
+            
+            if (prevBtn) {
+                if (currentSectionIndex === 0) {
+                    prevBtn.style.opacity = '0.5';
+                    prevBtn.style.cursor = 'not-allowed';
+                    prevBtn.disabled = true;
+                } else {
+                    prevBtn.style.opacity = '1';
+                    prevBtn.style.cursor = 'pointer';
+                    prevBtn.disabled = false;
+                }
+            }
+            
+            if (nextBtn) {
+                if (currentSectionIndex === sections.length - 1) {
+                    nextBtn.style.opacity = '0.5';
+                    nextBtn.style.cursor = 'not-allowed';
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.cursor = 'pointer';
+                    nextBtn.disabled = false;
+                }
+            }
+        }
+
+        function updateProgress() {
+            const progressText = document.getElementById('progress-text');
+            if (progressText) {
+                progressText.textContent = `Exercise ${currentSectionIndex + 1} of ${sections.length}`;
+            }
+        }
+
+        function handleScroll() {
+            const scrollPosition = window.scrollY + 150;
+            
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i].id);
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    if (scrollPosition >= sectionTop) {
+                        if (currentSectionIndex !== i) {
+                            currentSectionIndex = i;
+                            updateActiveSection(sections[i].id);
+                            updateNavigation();
+                            updateProgress();
+                            document.getElementById('current-section').textContent = sections[i].title;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Загружаем все упражнения
+            loadExercises('tasksContainer1', exercises1);
+            loadExercises('tasksContainer2', exercises2);
+            loadExercises('tasksContainer3', exercises3);
+            loadExercises('tasksContainer4', exercises4);
+            loadExercises('tasksContainer5', exercises5);
+
+            // IDs для каждого упражнения
+            const ids1 = exercises1.map(e => e.id);
+            const ids2 = exercises2.map(e => e.id);
+            const ids3 = exercises3.map(e => e.id);
+            const ids4 = exercises4.map(e => e.id);
+            const ids5 = exercises5.map(e => e.id);
+
+            // Добавляем обработчики для Exercise 1
+            document.getElementById('checkAllBtn1')?.addEventListener('click', () => checkAllAnswers(1, ids1));
+            document.getElementById('resetBtn1')?.addEventListener('click', () => resetExercise(1, ids1));
+
+            // Добавляем обработчики для Exercise 2
+            document.getElementById('checkAllBtn2')?.addEventListener('click', () => checkAllAnswers(2, ids2));
+            document.getElementById('resetBtn2')?.addEventListener('click', () => resetExercise(2, ids2));
+
+            // Добавляем обработчики для Exercise 3
+            document.getElementById('checkAllBtn3')?.addEventListener('click', () => checkAllAnswers(3, ids3));
+            document.getElementById('resetBtn3')?.addEventListener('click', () => resetExercise(3, ids3));
+
+            // Добавляем обработчики для Exercise 4
+            document.getElementById('checkAllBtn4')?.addEventListener('click', () => checkAllAnswers(4, ids4));
+            document.getElementById('resetBtn4')?.addEventListener('click', () => resetExercise(4, ids4));
+
+            // Добавляем обработчики для Exercise 5
+            document.getElementById('checkAllBtn5')?.addEventListener('click', () => checkAllAnswers(5, ids5));
+            document.getElementById('resetBtn5')?.addEventListener('click', () => resetExercise(5, ids5));
+
+            // Добавляем обработчики для отдельных полей ввода
+            const allIds = [...ids1, ...ids2, ...ids3, ...ids4, ...ids5];
+            allIds.forEach(id => {
+                const input = document.getElementById(`input-${id}`);
+                if (input) {
+                    input.addEventListener('keypress', (event) => {
+                        if (event.key === 'Enter') {
+                            const taskId = parseInt(event.target.id.split('-')[1]);
+                            let exerciseNum = 1;
+                            if (ids2.includes(taskId)) exerciseNum = 2;
+                            else if (ids3.includes(taskId)) exerciseNum = 3;
+                            else if (ids4.includes(taskId)) exerciseNum = 4;
+                            else if (ids5.includes(taskId)) exerciseNum = 5;
+                            
+                            checkAnswer(taskId, exerciseNum, 
+                                exerciseNum === 1 ? ids1 : 
+                                exerciseNum === 2 ? ids2 : 
+                                exerciseNum === 3 ? ids3 : 
+                                exerciseNum === 4 ? ids4 : ids5);
+                        }
+                    });
+                    
+                    input.addEventListener('blur', (event) => {
+                        const taskId = parseInt(event.target.id.split('-')[1]);
+                        let exerciseNum = 1;
+                        if (ids2.includes(taskId)) exerciseNum = 2;
+                        else if (ids3.includes(taskId)) exerciseNum = 3;
+                        else if (ids4.includes(taskId)) exerciseNum = 4;
+                        else if (ids5.includes(taskId)) exerciseNum = 5;
+                        
+                        checkAnswer(taskId, exerciseNum, 
+                            exerciseNum === 1 ? ids1 : 
+                            exerciseNum === 2 ? ids2 : 
+                            exerciseNum === 3 ? ids3 : 
+                            exerciseNum === 4 ? ids4 : ids5);
+                    });
+                }
+            });
+
+            // Настройка кнопок "Show Answers"
+            document.querySelectorAll('.answer-toggle').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        toggleAnswers(targetId, this);
+                    }
+                });
+            });
+
+            // Настройка навигации в боковой панели
+            const navItems = document.querySelectorAll('.lesson-nav-item');
+            
+            navItems.forEach((item, index) => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('data-target');
+                    if (targetId) {
+                        navigateToSection(targetId);
+                    }
+                });
+            });
+
+            // Настройка кнопок навигации
+            const prevBtn = document.getElementById('prev-section');
+            const nextBtn = document.getElementById('next-section');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentSectionIndex > 0) {
+                        const targetId = sections[currentSectionIndex - 1].id;
+                        navigateToSection(targetId);
+                    }
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    if (currentSectionIndex < sections.length - 1) {
+                        const targetId = sections[currentSectionIndex + 1].id;
+                        navigateToSection(targetId);
+                    }
+                });
+            }
+
+            // Инициализация первой секции
+            updateNavigation();
+            updateProgress();
+            
+            // Добавляем обработчик прокрутки для отслеживания активной секции
+            window.addEventListener('scroll', handleScroll);
+            
+            // Прокручиваем к началу страницы
+            window.scrollTo(0, 0);
+        });
+    </script>
+</body>
+</html>
